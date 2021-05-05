@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#33cbfc"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/a_main_greeting_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:padding="15dp"
+        android:background="#0097a7"
+        android:textColor="#00002f"
+        android:textSize="30sp"
+        android:text="CORAL-E \n Faites grandir votre île!">
+        </TextView>
+
+
+    <EditText
+        android:id="@+id/a_main_island_name_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#0097a7"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:hint="Entrez le nom de votre île!">
+     </EditText>
+
+    <Button
+        android:id="@+id/a_main_play_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:background="#ffa7ac"
+        android:text="Lancer la partie!"
+        android:padding="30dp"
+        android:layout_gravity="center">
+    </Button>
+
+
+
+</LinearLayout>
