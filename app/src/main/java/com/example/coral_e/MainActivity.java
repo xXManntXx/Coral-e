@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mPlayButton.setEnabled(s.toString().length());
+                mPlayButton.setEnabled(s.toString().length()!=0);
             }
 
             @Override
