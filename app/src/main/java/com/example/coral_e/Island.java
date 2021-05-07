@@ -75,8 +75,7 @@ public final class Island {
     public boolean isVoted(String searchedLawName) {
         for (Law tempLaw : this.islandLaws) {
             if (tempLaw.getLawName() == searchedLawName) {
-                if (tempLaw.isVoted()) { return true; }
-                else {return false; }
+                return tempLaw.isVoted();
             }
         }
         return false;
