@@ -3,6 +3,10 @@ package com.example.coral_e;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.coral_e.actors.Actor;
+import com.example.coral_e.actors.Fisherman;
+import com.example.coral_e.biodiversity.*;
+
 
 //each player got an island which regroup everything they possessed
 public final class Island {
@@ -14,19 +18,33 @@ public final class Island {
     private int resources;
     private int income;
     private List<Law> islandLaws = new ArrayList<Law>();
+    private List<Biodiversity> islandBio = new ArrayList<Biodiversity>();
+    private List<Actor> islandActors = new ArrayList<Actor>();
+    private String biome; //indicate the starting components of the island
+    /*BIOMES :
+    TestingBiome : can change, used for test
+    */
+
 
     //Constructor
     public Island() {
-        new Island("Mon île");
+        new Island("Mon île","TestingBiome");
     }
 
-    public Island(String myIslandName) {
+    public Island(String myIslandName,String myBiome) {
         this.islandName = myIslandName;
         this.socialLevel = 0;
         this.globalAwareness = 0;
         this.resources = 0;
         this.income = 0;
         //TODO add all existing laws in islandLaws
+        //TODO add all starting biodiversity regarding of the chosen biome
+        if (myBiome=="TestingBiome")
+        {
+            islandActors.add(new Fisherman());
+            islandBio.add(new MahiMahi(10));
+        }
+        //TODO add all starting actors
     }
 
     //Getter

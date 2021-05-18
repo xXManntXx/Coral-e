@@ -1,6 +1,6 @@
 package com.example.coral_e;
 
-abstract class Law {
+public abstract class Law {
     private String lawName;
     private int nbVote;
     private boolean isVisible;

@@ -1,6 +1,6 @@
 package com.example.coral_e;
 
-abstract class Event {
+public abstract class Event {
     private String eventName;
     private String eventContent;
 

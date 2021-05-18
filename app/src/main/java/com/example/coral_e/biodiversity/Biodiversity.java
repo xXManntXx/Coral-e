@@ -1,9 +1,9 @@
-package com.example.coral_e;
+package com.example.coral_e.biodiversity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class Biodiversity {
+public abstract class Biodiversity {
     private String bioName ;
     private String bioDescription ;
     private int bioPopulation;
@@ -11,7 +11,7 @@ abstract class Biodiversity {
     private int foodValue = 0 ; //to be determined by the subclass
     private String realm; //can either be "Fauna", "Flora", "Coral"
 
-    public Biodiversity(String myBioName, String myBioDescription,int myBioPopulation, String myRealm) {
+    public Biodiversity(String myBioName, String myBioDescription,String myRealm) {
         List<String> availableRealms = new ArrayList<String>() {
             {
                 add("Coral");
@@ -22,7 +22,6 @@ abstract class Biodiversity {
         assert (availableRealms.contains(myRealm)) : "Bio-object does not belong to any valid realm";
         this.bioName = myBioName;
         this.bioDescription = myBioDescription;
-        this.bioPopulation = myBioPopulation;
         this.realm = myRealm;
     }
 
@@ -55,5 +54,9 @@ abstract class Biodiversity {
 
     public void setFoodValue(int myFoodValue) {
         this.foodValue = myFoodValue;
+    }
+
+    public void setBioPopulation(int myBioPopulation) {
+        this.bioPopulation = myBioPopulation;
     }
 }
