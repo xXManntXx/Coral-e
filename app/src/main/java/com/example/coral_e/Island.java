@@ -7,6 +7,7 @@ import com.example.coral_e.actors.Actor;
 import com.example.coral_e.actors.Fisherman;
 import com.example.coral_e.biodiversity.*;
 import com.example.coral_e.laws.Law;
+import com.example.coral_e.laws.RegulatedFishing;
 
 
 //each player got an island which regroup everything they possessed
@@ -39,13 +40,13 @@ public final class Island {
         this.resources = 0;
         this.income = 0;
         //TODO add all existing laws in islandLaws
-        //TODO add all starting biodiversity regarding of the chosen biome
+        this.islandLaws.add(new RegulatedFishing());
+        //TODO add all starting biodiversity and actors regarding of the chosen biome
         if (myBiome=="TestingBiome")
         {
-            islandActors.add(new Fisherman());
-            islandBio.add(new MahiMahi(10));
+            this.islandActors.add(new Fisherman());
+            this.islandBio.add(new MahiMahi(10));
         }
-        //TODO add all starting actors
     }
 
     //Getter
@@ -95,6 +96,10 @@ public final class Island {
         return myVisibleLaws;
     }
 
+    public List<Biodiversity> getIslandBio() {
+        return islandBio;
+    }
+
     //Setter
     public void setIslandID(int myIslandID) {
         this.islandID = myIslandID;
@@ -129,5 +134,10 @@ public final class Island {
             }
         }
         return false;
+    }
+
+    public void addIncome(int value)
+    {
+        this.income+=value;
     }
 }

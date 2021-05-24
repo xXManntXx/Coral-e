@@ -34,6 +34,10 @@ public abstract class Biodiversity {
         return bioDescription;
     }
 
+    public int getBioPopulation() {
+        return bioPopulation;
+    }
+
     public int getTouristicValue() {
         return touristicValue;
     }
@@ -58,5 +62,12 @@ public abstract class Biodiversity {
 
     public void setBioPopulation(int myBioPopulation) {
         this.bioPopulation = myBioPopulation;
+    }
+
+    //public method
+
+    public void lowerBioPopulation(int value)
+    {
+        this.bioPopulation-=value;
     }
 }
