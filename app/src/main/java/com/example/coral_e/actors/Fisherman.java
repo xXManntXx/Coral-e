@@ -16,6 +16,6 @@ public class Fisherman extends Actor {
     }
     public void useActive(Archipelago myArchipelago) //generate income based on fishery
     {
-        //TODO propose the player to select an island, an fish there
+        //TODO propose the player to select an island, and fish there
     }
 }

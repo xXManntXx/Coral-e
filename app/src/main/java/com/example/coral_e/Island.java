@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.coral_e.actors.Actor;
 import com.example.coral_e.actors.Fisherman;
 import com.example.coral_e.biodiversity.*;
+import com.example.coral_e.laws.Law;
 
 
 //each player got an island which regroup everything they possessed

@@ -1,5 +1,7 @@
 package com.example.coral_e;
 
+import com.example.coral_e.laws.Law;
+
 import java.util.ArrayList;
 import java.util.List;
 

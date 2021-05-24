@@ -1,4 +1,6 @@
-package com.example.coral_e;
+package com.example.coral_e.laws;
+
+import com.example.coral_e.Island;
 
 public abstract class Law {
     private String lawName;
@@ -49,5 +51,6 @@ public abstract class Law {
         this.nbVote++;
     }
 
+    abstract void apply(Island myIsland);
 
 }
