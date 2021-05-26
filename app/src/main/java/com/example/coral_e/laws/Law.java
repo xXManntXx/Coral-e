@@ -51,6 +51,16 @@ public abstract class Law {
         this.nbVote++;
     }
 
+    public void makeVoted(){
+        this.isVoted=true;
+    }
+
+    public void makeVisible()
+    {
+        this.isVisible = true;
+    }
+
+    //to be implemented by subclasses
     abstract void apply(Island myIsland);
 
 }

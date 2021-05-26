@@ -34,6 +34,12 @@ public final class Island {
     }
 
     public Island(String myIslandName,String myBiome) {
+        List<String> availableBiomes = new ArrayList<String>() {
+            {
+                add("TestingBiome");
+            }
+        };
+        assert (availableBiomes.contains(myBiome)) : "Unknown biome selected";
         this.islandName = myIslandName;
         this.socialLevel = 0;
         this.globalAwareness = 0;

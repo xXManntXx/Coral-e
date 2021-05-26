@@ -11,6 +11,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    // Initialisation
+    Island playerIsland = new Island("Ma première île", "TestingBiome");
+    //TODO If player is Host :
+        Archipelago globalArchi = new Archipelago(playerIsland);
+
+    //First tests
+    //TODO Delete all things below to put the real deal instead
     private TextView mGreetingText;
     private EditText mIslandName;
     private Button mPlayButton;
@@ -44,8 +51,16 @@ public class MainActivity extends AppCompatActivity {
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                playerIsland.getVisibleLaws().get(0).makeVoted();
             }
         });
+
+        if (playerIsland.getVisibleLaws().get(0).isVoted()) {
+            mGreetingText.setText("Test :" + playerIsland.getVisibleLaws().get(0).getLawContent());
+        }
+        else {
+            mGreetingText.setText("Loi non votée");
+        }
     }
+
 }

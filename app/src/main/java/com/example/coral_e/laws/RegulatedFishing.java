@@ -5,6 +5,7 @@ import com.example.coral_e.Island;
 public class RegulatedFishing extends Law{
     public RegulatedFishing() {
         super("Regulated Fishing", "Vous régulé la pêche, interdisant les pratiques destructrices.");
+        this.makeVisible();
     }
 
     @Override
