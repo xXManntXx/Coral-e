@@ -21,10 +21,10 @@ public class Fisherman extends Actor {
     {
         for (Biodiversity tempBio : myIsland.getIslandBio()) {
             if (tempBio.getRealm()=="Fauna" && tempBio.getFoodValue()>0){
-                Log.d(TAG,"Bio pêchable : " + tempBio.getBioName());
                 int caughtFish = Math.min((5 * this.getActorLevel()), (int) (tempBio.getBioPopulation() / 10));
+                Log.d(TAG,"Bio pêchable : " + tempBio.getBioName() + "caught : " + caughtFish);
                 myIsland.addIncome(tempBio.getFoodValue()*caughtFish);
-                Log.d(TAG,"Income increased by : " + tempBio.getFoodValue()*caughtFish);
+                Log.d(TAG,"Income increased by : " + tempBio.getFoodValue()*caughtFish + " (food value : " + tempBio.getFoodValue() + " )");
                 tempBio.lowerBioPopulation(caughtFish);
             }
         }

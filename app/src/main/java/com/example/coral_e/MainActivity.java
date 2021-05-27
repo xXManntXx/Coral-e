@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Actor monPecheur = playerIsland.getIslandActors().get(0);
-                monPecheur.usePassive(playerIsland);
                 Log.d(TAG,"Acteur choisit : " + monPecheur.getActorName());
+                monPecheur.usePassive(playerIsland);
                 mGreetingText.setText("New Income : " + playerIsland.getIncome() + "\nNew fish population : " + playerIsland.getIslandBio().get(0).getBioPopulation());
             }
         });
