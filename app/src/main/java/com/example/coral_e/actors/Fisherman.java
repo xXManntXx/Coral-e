@@ -1,7 +1,5 @@
 package com.example.coral_e.actors;
 
-import android.util.Log;
-
 import com.example.coral_e.Archipelago;
 import com.example.coral_e.Island;
 import com.example.coral_e.biodiversity.Biodiversity;
@@ -24,7 +22,7 @@ public class Fisherman extends Actor {
                 if(!(myIsland.isLawVoted("REG_FISHING") && tempBio.getBioID().equals("BLACK_SHARK")))
                 {
                     int caughtFish = Math.min((5 * this.getActorLevel()), (int) (tempBio.getBioPopulation() / 10));
-                    myIsland.addIncome(tempBio.getFoodValue()*caughtFish);
+                    myIsland.increaseIncome(tempBio.getFoodValue()*caughtFish);
                     tempBio.lowerBioPopulation(caughtFish);
                 }
             }

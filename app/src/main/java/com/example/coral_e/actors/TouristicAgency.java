@@ -16,7 +16,7 @@ public class TouristicAgency extends Actor {
 
     @Override
     public void usePassive(Island myIsland){
-        myIsland.addIncome(this.getActorLevel()*myIsland.touristicValue());
+        myIsland.increaseIncome(this.getActorLevel()*myIsland.touristicValue());
         if (myIsland.getGlobalAwareness()<10)
         {
             Biodiversity affectedBio = myIsland.getIslandBio().get(new Random().nextInt(myIsland.getIslandBio().size()));

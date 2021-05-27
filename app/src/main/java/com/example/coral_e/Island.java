@@ -4,9 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.coral_e.actors.Actor;
+import com.example.coral_e.actors.EnvironmentalAssociation;
+import com.example.coral_e.actors.Farmer;
 import com.example.coral_e.actors.Fisherman;
+import com.example.coral_e.actors.Scientifics;
 import com.example.coral_e.actors.TouristicAgency;
 import com.example.coral_e.biodiversity.*;
+import com.example.coral_e.laws.BeachPrivatization;
+import com.example.coral_e.laws.FreeTrade;
+import com.example.coral_e.laws.GreenExcursion;
 import com.example.coral_e.laws.Law;
 import com.example.coral_e.laws.RegulatedFishing;
 import com.example.coral_e.scenarios.FortressWorld;
@@ -60,11 +66,18 @@ public final class Island {
         this.income = 0;
         //TODO add all existing laws in islandLaws
         this.islandLaws.add(new RegulatedFishing());
+        this.islandLaws.add(new BeachPrivatization());
+        this.islandLaws.add(new FreeTrade());
+        this.islandLaws.add(new GreenExcursion());
+
         //TODO add all starting biodiversity and actors regarding of the chosen biome
         if (myBiome=="TestingBiome")
         {
             this.islandActors.add(new Fisherman());
             this.islandActors.add(new TouristicAgency());
+            this.islandActors.add(new Farmer());
+            this.islandActors.add(new Scientifics());
+            this.islandActors.add(new EnvironmentalAssociation());
 
             this.islandBio.add(new MahiMahi(20));
             this.islandBio.add(new BlacktipShark(5));
@@ -163,7 +176,7 @@ public final class Island {
 
     //Modifier
 
-    public void addIncome(int value)
+    public void increaseIncome(int value)
     {
         this.income+=value;
     }

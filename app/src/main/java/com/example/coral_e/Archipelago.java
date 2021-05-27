@@ -1,6 +1,10 @@
 package com.example.coral_e;
 
+import com.example.coral_e.laws.BeachPrivatization;
+import com.example.coral_e.laws.FreeTrade;
+import com.example.coral_e.laws.GreenExcursion;
 import com.example.coral_e.laws.Law;
+import com.example.coral_e.laws.RegulatedFishing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +19,11 @@ final public class Archipelago {
         this.federateIslands.add(hostIsland);
         this.nbPlayer=1;
         //TODO add all existing laws in archipelagoLaws
+        this.archipelagoLaws.add(new RegulatedFishing());
+        this.archipelagoLaws.add(new BeachPrivatization());
+        this.archipelagoLaws.add(new FreeTrade());
+        this.archipelagoLaws.add(new GreenExcursion());
+
     }
 
     //getter
