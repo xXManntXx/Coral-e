@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,10 @@ import com.example.coral_e.actors.Actor;
 import com.example.coral_e.actors.Fisherman;
 
 public class MainActivity extends AppCompatActivity {
+    //Logs
+    private static final String TAG = "MainActivity";
+
+
     // Initialisation
     Island playerIsland = new Island("Ma première île", "TestingBiome");
     //TODO If player is Host :
@@ -56,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Actor monPecheur = playerIsland.getIslandActors().get(0);
                 monPecheur.usePassive(playerIsland);
+                Log.d(TAG,"Acteur choisit : " + monPecheur.getActorName());
                 mGreetingText.setText("New Income : " + playerIsland.getIncome() + "\nNew fish population : " + playerIsland.getIslandBio().get(0).getBioPopulation());
             }
         });
