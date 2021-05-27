@@ -16,6 +16,7 @@ public abstract class Actor {
     public Actor(String myActorName, String myActorDescription) {
         this.actorName = myActorName;
         this.actorDescription = myActorDescription;
+        this.actorLevel=1;
     }
 
     //getter
