@@ -52,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 playerIsland.getVisibleLaws().get(0).makeVoted();
+                if (playerIsland.getVisibleLaws().get(0).isVoted()) {
+                    mGreetingText.setText("Test :" + playerIsland.getVisibleLaws().get(0).getLawContent());
+                }
+                else {
+                    mGreetingText.setText("Loi non votée");
+                }
             }
         });
 
