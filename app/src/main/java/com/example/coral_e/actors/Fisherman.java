@@ -20,12 +20,13 @@ public class Fisherman extends Actor {
     public void usePassive(Island myIsland) //generate income based on fishery
     {
         for (Biodiversity tempBio : myIsland.getIslandBio()) {
-            if (tempBio.getRealm()=="Fauna" && tempBio.getFoodValue()>0){
-                int caughtFish = Math.min((5 * this.getActorLevel()), (int) (tempBio.getBioPopulation() / 10));
-                Log.d(TAG,"Bio pêchable : " + tempBio.getBioName() + "caught : " + caughtFish);
-                myIsland.addIncome(tempBio.getFoodValue()*caughtFish);
-                Log.d(TAG,"Income increased by : " + tempBio.getFoodValue()*caughtFish + " (food value : " + tempBio.getFoodValue() + " )");
-                tempBio.lowerBioPopulation(caughtFish);
+            if (tempBio.getRealm().equals("Fauna") && tempBio.getFoodValue()>0){
+                if(!(myIsland.isLawVoted("REG_FISHING") && tempBio.getBioID().equals("BLACK_SHARK")))
+                {
+                    int caughtFish = Math.min((5 * this.getActorLevel()), (int) (tempBio.getBioPopulation() / 10));
+                    myIsland.addIncome(tempBio.getFoodValue()*caughtFish);
+                    tempBio.lowerBioPopulation(caughtFish);
+                }
             }
         }
     }

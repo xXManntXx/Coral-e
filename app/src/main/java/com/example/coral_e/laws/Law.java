@@ -3,6 +3,7 @@ package com.example.coral_e.laws;
 import com.example.coral_e.Island;
 
 public abstract class Law {
+    private String lawID;
     private String lawName;
     private int nbVote;
     private boolean isVisible;
@@ -23,6 +24,10 @@ public abstract class Law {
         return lawName;
     }
 
+    public String getLawID() {
+        return lawID;
+    }
+
     public boolean isVisible() {
         return isVisible;
     }
@@ -39,6 +44,13 @@ public abstract class Law {
         return nbVote;
     }
 
+    //setter
+
+    protected void setLawID(String myLawID) {
+        lawID = myLawID;
+    }
+
+
     //public method
 
     public void voteInit()
@@ -53,6 +65,11 @@ public abstract class Law {
 
     public void makeVoted(){
         this.isVoted=true;
+    }
+
+    public void makeVoted(Island myIsland){
+        this.isVoted=true;
+        this.apply(myIsland);
     }
 
     public void makeVisible()

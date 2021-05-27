@@ -9,15 +9,25 @@ import com.example.coral_e.actors.TouristicAgency;
 import com.example.coral_e.biodiversity.*;
 import com.example.coral_e.laws.Law;
 import com.example.coral_e.laws.RegulatedFishing;
+import com.example.coral_e.scenarios.FortressWorld;
+import com.example.coral_e.scenarios.GreatTransition;
+import com.example.coral_e.scenarios.MarketForce;
+import com.example.coral_e.scenarios.PolicyReform;
+import com.example.coral_e.scenarios.Scenario;
 
 
 //each player got an island which regroup everything they possessed
 public final class Island {
+    //Logs
+    private static final String TAG = "Island";
 
-    private int islandID = 0;
+    private int islandID;
     private String islandName;
     private int socialLevel;
     private int globalAwareness;
+    private int islandFocus; //negative : economic growth - positive : well-being
+    private int islandSpirit; //negative : individualism - positive : community
+    private Scenario forecastScenario;
     private int resources;
     private int income;
     private List<Law> islandLaws = new ArrayList<Law>();
@@ -44,6 +54,8 @@ public final class Island {
         this.islandName = myIslandName;
         this.socialLevel = 0;
         this.globalAwareness = 0;
+        this.islandFocus = 0;
+        this.islandSpirit = 0;
         this.resources = 0;
         this.income = 0;
         //TODO add all existing laws in islandLaws
@@ -67,6 +79,18 @@ public final class Island {
 
     public String getIslandName() {
         return islandName;
+    }
+
+    public int getIslandFocus() {
+        return islandFocus;
+    }
+
+    public int getIslandSpirit() {
+        return islandSpirit;
+    }
+
+    public Scenario getForecastScenario() {
+        return forecastScenario;
     }
 
     public int getSocialLevel() {
@@ -137,24 +161,52 @@ public final class Island {
     }
 
 
-    //Public Methods
-
-    public void generateIncome() {
-        this.resources += this.income;
-    }
-
-    public boolean isVoted(String searchedLawName) {
-        for (Law tempLaw : this.islandLaws) {
-            if (tempLaw.getLawName() == searchedLawName) {
-                return tempLaw.isVoted();
-            }
-        }
-        return false;
-    }
+    //Modifier
 
     public void addIncome(int value)
     {
         this.income+=value;
+    }
+
+    public void increaseAwareness(int myValue)
+    {
+        this.globalAwareness+=myValue;
+    }
+
+    public void increaseSocialLvl(int myValue)
+    {
+        this.socialLevel+=myValue;
+    }
+
+    public void increaseFocus(int myValue)
+    {
+        this.islandFocus+=myValue;
+    }
+
+    public void increaseSpirit(int myValue)
+    {
+        this.islandSpirit+=myValue;
+    }
+
+
+    //Public Methods
+    public void generateIncome() {
+        this.resources += this.income;
+    }
+
+    public boolean isLawVoted(String searchedLawID) {
+        try {
+            for (Law tempLaw : this.islandLaws) {
+                if (tempLaw.getLawID().equals(searchedLawID)) {
+                    return tempLaw.isVoted();
+                }
+            }
+            throw new Exception("Law not found");
+        } catch (Exception myE){
+            myE.printStackTrace();
+            System.err.println("Caught Exception: " + myE.getMessage());
+        }
+        return false;
     }
 
     public int touristicValue()
@@ -166,8 +218,27 @@ public final class Island {
         return myTouristicValue;
     }
 
-    public void increaseAwareness(int myValue)
+    public void forecast()
     {
-        this.globalAwareness+=myValue;
+        if (this.islandFocus<0)
+        {
+            if (this.islandSpirit<0)
+            {
+                forecastScenario  = new MarketForce();
+            }else
+            {
+                forecastScenario = new PolicyReform();
+            }
+        }
+        else
+        {
+            if (this.islandSpirit<0)
+            {
+                forecastScenario  = new FortressWorld();
+            }else
+            {
+                forecastScenario = new GreatTransition();
+            }
+        }
     }
 }

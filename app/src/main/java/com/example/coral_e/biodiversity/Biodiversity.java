@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Biodiversity {
+    private String bioID ;
     private String bioName ;
     private String bioDescription ;
     private int bioPopulation;
@@ -26,6 +27,12 @@ public abstract class Biodiversity {
     }
 
     //getter
+
+
+    public String getBioID() {
+        return bioID;
+    }
+
     public String getBioName() {
         return bioName;
     }
@@ -51,6 +58,11 @@ public abstract class Biodiversity {
     }
 
     //setter
+
+
+    protected void setBioID(String myBioID) {
+        bioID = myBioID;
+    }
 
     public void setTouristicValue(int myTouristicValue) {
         this.touristicValue = myTouristicValue;

@@ -4,12 +4,19 @@ import com.example.coral_e.Island;
 
 public class RegulatedFishing extends Law{
     public RegulatedFishing() {
-        super("Regulated Fishing", "Vous régulé la pêche, interdisant les pratiques destructrices.");
+        super("Peche régulée", "Vous régulé la pêche, interdisant les pratiques destructrices.");
+        this.setLawID("REG_FISHING");
         this.makeVisible();
+        this.makeVoted();
     }
 
     @Override
     void apply(Island myIsland) {
-        //TODO affecte le social si le niveau de global awarness n'est pas assez élevé
+        if (myIsland.getGlobalAwareness()<5)
+        {
+            myIsland.increaseSocialLvl(-5);
+        }
+        myIsland.increaseAwareness(5);
+        myIsland.increaseSpirit(5);
     }
 }
