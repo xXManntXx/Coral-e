@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.coral_e.actors.Actor;
 import com.example.coral_e.actors.Fisherman;
+import com.example.coral_e.actors.TouristicAgency;
 import com.example.coral_e.biodiversity.*;
 import com.example.coral_e.laws.Law;
 import com.example.coral_e.laws.RegulatedFishing;
@@ -51,7 +52,11 @@ public final class Island {
         if (myBiome=="TestingBiome")
         {
             this.islandActors.add(new Fisherman());
-            this.islandBio.add(new MahiMahi(10));
+            this.islandActors.add(new TouristicAgency());
+
+            this.islandBio.add(new MahiMahi(20));
+            this.islandBio.add(new BlacktipShark(5));
+            this.islandBio.add(new FireCoral(10));
         }
     }
 
@@ -106,6 +111,10 @@ public final class Island {
         return islandBio;
     }
 
+    public List<Actor> getIslandActors() {
+        return islandActors;
+    }
+
     //Setter
     public void setIslandID(int myIslandID) {
         this.islandID = myIslandID;
@@ -127,6 +136,7 @@ public final class Island {
         this.income = myIncome;
     }
 
+
     //Public Methods
 
     public void generateIncome() {
@@ -145,5 +155,19 @@ public final class Island {
     public void addIncome(int value)
     {
         this.income+=value;
+    }
+
+    public int touristicValue()
+    {
+        int myTouristicValue = 0;
+        for (Biodiversity tempBio : this.getIslandBio()) {
+            myTouristicValue+=tempBio.getTouristicValue()*tempBio.getBioPopulation();
+        }
+        return myTouristicValue;
+    }
+
+    public void increaseAwareness(int myValue)
+    {
+        this.globalAwareness+=myValue;
     }
 }

@@ -29,7 +29,7 @@ public class Fisherman extends Actor {
     }
 
     @Override
-    void evolve() {
+    public void evolve() {
         this.setActorLevel(this.getActorBudget()%25);
         //TODO suivant le niveau et l'île, transformation en acteur plus gros
     }

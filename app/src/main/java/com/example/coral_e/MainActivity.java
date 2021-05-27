@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.coral_e.actors.Actor;
+import com.example.coral_e.actors.Fisherman;
+
 public class MainActivity extends AppCompatActivity {
     // Initialisation
     Island playerIsland = new Island("Ma première île", "TestingBiome");
@@ -51,22 +54,12 @@ public class MainActivity extends AppCompatActivity {
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playerIsland.getVisibleLaws().get(0).makeVoted();
-                if (playerIsland.getVisibleLaws().get(0).isVoted()) {
-                    mGreetingText.setText("Test :" + playerIsland.getVisibleLaws().get(0).getLawContent());
-                }
-                else {
-                    mGreetingText.setText("Loi non votée");
-                }
+                Actor monPecheur = playerIsland.getIslandActors().get(0);
+                monPecheur.usePassive(playerIsland);
+                mGreetingText.setText("New Income : " + playerIsland.getIncome() + "\nNew fish population : " + playerIsland.getIslandBio().get(0).getBioPopulation());
             }
         });
-
-        if (playerIsland.getVisibleLaws().get(0).isVoted()) {
-            mGreetingText.setText("Test :" + playerIsland.getVisibleLaws().get(0).getLawContent());
-        }
-        else {
-            mGreetingText.setText("Loi non votée");
-        }
+        mGreetingText.setText("Inital Income : " + playerIsland.getIncome() + "\nInitial fish population : " + playerIsland.getIslandBio().get(0).getBioPopulation());
     }
 
 }

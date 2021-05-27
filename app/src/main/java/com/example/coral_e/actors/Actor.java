@@ -42,7 +42,7 @@ public abstract class Actor {
     }
 
     //public method
-    abstract void usePassive(Island myIsland); //Passive aptitude, used each begin of turn or on acquisition
-    abstract void useActive(Archipelago myArchipelago); //Active aptitude, used at actor activation
-    abstract void evolve();//Modify the level based on the budget value
+    public abstract void usePassive(Island myIsland); //Passive aptitude, used each begin of turn or on acquisition
+    public abstract void useActive(Archipelago myArchipelago); //Active aptitude, used at actor activation
+    public abstract void evolve();//Modify the level based on the budget value
 }
