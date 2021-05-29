@@ -58,8 +58,6 @@ public abstract class Biodiversity {
     }
 
     //setter
-
-
     protected void setBioID(String myBioID) {
         bioID = myBioID;
     }
@@ -76,7 +74,10 @@ public abstract class Biodiversity {
         this.bioPopulation = myBioPopulation;
     }
 
-    //public method
+    //modifier
+    public  void multiplyBioPop(double value) {
+        this.bioPopulation=(int)(this.bioPopulation*value);
+    }
 
     public void lowerBioPopulation(int value)
     {

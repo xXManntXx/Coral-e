@@ -42,6 +42,13 @@ public abstract class Actor {
         actorLevel = myActorLevel;
     }
 
+    //Modifier
+
+    public void increaseLevel(int myValue)
+    {
+        this.actorLevel+=myValue;
+    }
+
     //public method
     public abstract void usePassive(Island myIsland); //Passive aptitude, used each begin of turn or on acquisition
     public abstract void useActive(Archipelago myArchipelago); //Active aptitude, used at actor activation

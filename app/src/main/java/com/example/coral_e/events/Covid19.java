@@ -1,6 +1,10 @@
 package com.example.coral_e.events;
 
 import com.example.coral_e.Island;
+import com.example.coral_e.actors.Actor;
+import com.example.coral_e.actors.Fisherman;
+import com.example.coral_e.actors.TouristicAgency;
+import com.example.coral_e.biodiversity.Biodiversity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,8 +21,19 @@ public class Covid19 extends Event {
 
     @Override
     void happen(Island myIsland) {
-        //TODO détruit le tourisme et le moral mais bénéficie l'écosystème
+        Actor crippledActor = myIsland.getActor(new TouristicAgency());
+        if(!crippledActor.getActorName().equals("GoneWrong")) {
+            if (crippledActor.getActorLevel()>1) {
+                crippledActor.increaseLevel(-1);
+            }
+        }
+        for(Biodiversity tempBio : myIsland.getIslandBio()) {
+            if(tempBio.getTouristicValue()>9)
+            {
+                tempBio.multiplyBioPop(1.5);
+            }
+        }
+        //TODO ajouter le fait que ça heal la nature
     }
-
 
 }

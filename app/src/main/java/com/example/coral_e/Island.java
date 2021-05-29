@@ -152,6 +152,34 @@ public final class Island {
         return islandActors;
     }
 
+    public Actor getActor(Actor myActor)
+    {
+        try {
+            for (Actor tempActor : this.islandActors) {
+                if (tempActor.getClass().getSimpleName().equals(myActor.getClass().getSimpleName())) {
+                    return tempActor;
+                }
+            }
+            throw new Exception("No actor found");
+        }catch (Exception myE){
+        myE.printStackTrace();
+        System.err.println("Caught Exception: " + myE.getMessage());
+    }
+        return new Actor("GoneWrong","You should not see this.") {
+            @Override
+            public void usePassive(Island myIsland) {
+            }
+
+            @Override
+            public void useActive(Archipelago myArchipelago) {
+            }
+
+            @Override
+            public void evolve() {
+            }
+        };
+    }
+
     //Setter
     public void setIslandID(int myIslandID) {
         this.islandID = myIslandID;
