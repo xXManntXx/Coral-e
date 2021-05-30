@@ -36,7 +36,11 @@ public class Fisherman extends Actor {
 
     @Override
     public void evolve(Island myIsland) {
-        this.setActorLevel(this.getActorBudget()%25);
-        //TODO suivant le niveau et l'île, transformation en acteur plus gros
+        this.setActorLevel((int)this.getActorBudget()/25);
+        if (this.getActorLevel()>3 && myIsland.getIslandFocus()<0)
+        {
+            myIsland.addActor(new Trawler(this.getActorLevel()));
+            this.deactivateActor();
+        }
     }
 }
