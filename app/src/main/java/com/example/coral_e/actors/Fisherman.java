@@ -35,7 +35,7 @@ public class Fisherman extends Actor {
     }
 
     @Override
-    public void evolve() {
+    public void evolve(Island myIsland) {
         this.setActorLevel(this.getActorBudget()%25);
         //TODO suivant le niveau et l'île, transformation en acteur plus gros
     }
