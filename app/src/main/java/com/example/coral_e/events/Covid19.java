@@ -28,12 +28,10 @@ public class Covid19 extends Event {
             }
         }
         for(Biodiversity tempBio : myIsland.getIslandBio()) {
-            if(tempBio.getTouristicValue()>9)
-            {
+            if (tempBio.getTouristicValue() > 9) {
                 tempBio.multiplyBioPop(1.5);
             }
         }
-        //TODO ajouter le fait que ça heal la nature
     }
 
 }

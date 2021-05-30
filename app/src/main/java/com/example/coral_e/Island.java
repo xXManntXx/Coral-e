@@ -175,7 +175,7 @@ public final class Island {
             }
 
             @Override
-            public void evolve() {
+            public void evolve(Island myIsland) {
             }
         };
     }
@@ -227,6 +227,11 @@ public final class Island {
     public void increaseSpirit(int myValue)
     {
         this.islandSpirit+=myValue;
+    }
+
+    public void addActor(Actor myActor)
+    {
+        this.islandActors.add(myActor);
     }
 
 

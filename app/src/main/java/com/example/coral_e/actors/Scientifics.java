@@ -22,7 +22,7 @@ public class Scientifics extends Actor{
     }
 
     @Override
-    public void evolve() {
+    public void evolve(Island myIsland) {
         //TODO Aquarium de conservation
     }
 }

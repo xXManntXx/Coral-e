@@ -33,7 +33,7 @@ public class TouristicAgency extends Actor {
     }
 
     @Override
-    public void evolve() {
+    public void evolve(Island myIsland) {
         //TODO possibilité d'évolution -> bio tourisme, tourisme de masse
     }
 }

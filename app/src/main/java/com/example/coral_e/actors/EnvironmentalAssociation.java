@@ -9,10 +9,9 @@ public class EnvironmentalAssociation extends Actor {
     }
 
     //public method
-
     @Override
     public void usePassive(Island myIsland) {
-        myIsland.increaseAwareness(20);
+        myIsland.increaseAwareness(5*this.getActorLevel());
     }
 
     @Override
@@ -21,7 +20,11 @@ public class EnvironmentalAssociation extends Actor {
     }
 
     @Override
-    public void evolve() {
-        //TODO en ONG
+    public void evolve(Island myIsland) {
+        this.setActorLevel((int)(this.getActorBudget()/10));
+        if (this.getActorLevel()>5) {
+            myIsland.addActor(new ONG(this.getActorLevel()));
+            this.deactivateActor();
+        }
     }
 }
