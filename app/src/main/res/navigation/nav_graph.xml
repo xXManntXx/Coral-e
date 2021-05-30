@@ -3,20 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/first">
 
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.coral_e.ui.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        android:id="@+id/start"
+        android:name="com.example.coral_e.Start"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" >
         <action
-            android:id="@+id/action_loginFragment_to_scrollingFragment"
-            app:destination="@id/scrollingFragment" />
+            android:id="@+id/action_start_to_first"
+            app:destination="@id/first" />
     </fragment>
     <fragment
-        android:id="@+id/scrollingFragment"
-        android:name="com.example.coral_e.ScrollingFragment"
-        android:label="fragment_scrolling"
-        tools:layout="@layout/fragment_scrolling" />
+        android:id="@+id/first"
+        android:name="com.example.coral_e.First"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_first" >
+        <action
+            android:id="@+id/action_first_to_start"
+            app:destination="@id/start" />
+    </fragment>
+    <fragment
+        android:id="@+id/board"
+        android:name="com.example.coral_e.Board"
+        android:label="fragment_board"
+        tools:layout="@layout/fragment_board" />
 </navigation>

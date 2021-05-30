@@ -1,5 +1,6 @@
 package com.example.coral_e;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 
 import com.example.coral_e.actors.Actor;
 import com.example.coral_e.actors.Fisherman;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
     //Logs
@@ -31,40 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private Button mPlayButton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mGreetingText = (TextView) findViewById(R.id.a_main_greeting_text);
-        mIslandName = (EditText) findViewById(R.id.a_main_island_name_input);
-        mPlayButton = (Button) findViewById(R.id.a_main_play_btn);
-
-        mPlayButton.setEnabled(false);
-        mIslandName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mPlayButton.setEnabled(s.toString().length()!=0);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-        mPlayButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Actor monPecheur = playerIsland.getIslandActors().get(0);
-                monPecheur.usePassive(playerIsland);
-                mGreetingText.setText("New Income : " + playerIsland.getIncome() + "\nNew fish population : " + playerIsland.getIslandBio().get(0).getBioPopulation());
-            }
-        });
-        mGreetingText.setText("Inital Income : " + playerIsland.getIncome() + "\nInitial fish population : " + playerIsland.getIslandBio().get(0).getBioPopulation());
     }
-
 }
