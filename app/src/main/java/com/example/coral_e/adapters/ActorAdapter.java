@@ -68,7 +68,10 @@ public class ActorAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 currentActor.increaseActorBudget(100);
-                Toast.makeText(context,"Vous investissez 100k€ dans " + actorName +"!",Toast.LENGTH_LONG);
+                Toast.makeText(
+                        context,
+                        "Vous investissez 100k€ dans " + actorName +"!\nTotal : " + currentActor.getActorBudget()+"k€",
+                        Toast.LENGTH_LONG).show();
             }
         });
 
