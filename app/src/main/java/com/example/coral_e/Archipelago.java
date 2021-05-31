@@ -22,7 +22,7 @@ final public class Archipelago {
     public Archipelago(Island hostIsland) {
         this.federateIslands.add(hostIsland);
         this.nbPlayer=1;
-        this.presentTurn = 0;
+        this.presentTurn = 1;
         //TODO add all existing laws in archipelagoLaws
         this.archipelagoLaws.add(new RegulatedFishing());
         this.archipelagoLaws.add(new BeachPrivatization());

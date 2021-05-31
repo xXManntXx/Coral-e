@@ -53,6 +53,8 @@ public final class Island implements Parcelable {
     /*BIOMES :
     TestingBiome : can change, used for test
     */
+    //TODO just for presentation, to delete after (redondant with Archipelago)
+    private int presentTurn;
 
 
     //Constructor
@@ -93,6 +95,9 @@ public final class Island implements Parcelable {
             this.islandBio.add(new BlacktipShark(5));
             this.islandBio.add(new FireCoral(10));
         }
+
+        //TODO just for presentation, to delete after (redondant with Archipelago)
+        this.presentTurn = 1;
     }
 
     protected Island(Parcel in) {
@@ -358,6 +363,13 @@ public final class Island implements Parcelable {
         }
     }
 
+    public void passTurn()
+    {
+        this.presentTurn+=1;
+        this.activateEvents(this.presentTurn);
+        this.sufferEvent();
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -374,5 +386,7 @@ public final class Island implements Parcelable {
         dest.writeInt(resources);
         dest.writeInt(income);
         dest.writeString(biome);
+        //TODO juste for presentation, to remove caus redondant with archipelago
+        dest.writeInt(presentTurn);
     }
 }
