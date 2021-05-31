@@ -100,4 +100,6 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="law_default_name">Nom de votre loi</string>
+    <string name="law_default_content">Le contenu de votre loi</string>
 </resources>

@@ -21,11 +21,12 @@ public class MainActivity extends AppCompatActivity {
     //Logs
     private static final String TAG = "MainActivity";
 
-
+    /*TODO move all below to more accurate place
     // Initialisation
     Island playerIsland = new Island("Ma première île", "TestingBiome");
     //TODO If player is Host :
         Archipelago globalArchi = new Archipelago(playerIsland);
+     */
 
 
     //First tests
@@ -38,11 +39,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    //Data transmission test
-    public Island getPlayerIsland()
-    {
-        return playerIsland;
     }
 }

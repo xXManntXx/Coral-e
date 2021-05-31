@@ -17,7 +17,16 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.coral_e.adapters.LawAdapter;
+import com.example.coral_e.laws.BeachPrivatization;
+import com.example.coral_e.laws.GreenExcursion;
+import com.example.coral_e.laws.Law;
+import com.example.coral_e.laws.RegulatedFishing;
+
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,23 +79,6 @@ public class Voting extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_voting, container, false);
-
-        //Get information from MainActivity
-        MainActivity activity = (MainActivity) getActivity();
-        Island myPlayerIsland = activity.getPlayerIsland();
-
-        //Build adapter
-        ArrayAdapter<String> myLawsAdapter = new ArrayAdapter<String>(
-                getActivity(),
-                R.layout.fragment_voting,
-                R.id.lawTexts,
-                myPlayerIsland.getLawTexts()
-        );
-
-        ListView listView = (ListView) rootView.findViewById(R.id.lawTexts);
-        listView.setAdapter(myLawsAdapter);
-
-
         // Inflate the layout for this fragment
         return rootView;
     }
@@ -104,5 +96,18 @@ public class Voting extends Fragment {
                 navController.navigate(R.id.action_voting_to_board);
             }
         });
+
+
+        //Showing list of laws
+        //data
+        //TODO récupérer les lois de l'île en question
+        List<Law> myLaws = new ArrayList<>();
+        myLaws.add(new BeachPrivatization());
+        myLaws.add(new GreenExcursion());
+        myLaws.add(new RegulatedFishing());
+        //TODO supprimer au dessus pour remplacer par les lois de lîle
+        //get lists view
+        ListView lawsListView = view.findViewById(R.id.myLaws_list_view);
+        lawsListView.setAdapter(new LawAdapter(getContext(),myLaws));
     }
 }

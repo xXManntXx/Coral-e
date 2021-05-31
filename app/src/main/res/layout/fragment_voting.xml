@@ -9,9 +9,8 @@
     <include layout="@layout/toolbar"></include>
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/lawTexts" />
+        android:id="@+id/myLaws_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></ListView>
 
 </FrameLayout>
