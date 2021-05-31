@@ -36,12 +36,4 @@
         android:layout_marginTop="450dp"
         android:background="@drawable/icon_phone" />
 
-
-    <TextView
-        android:id="@+id/OBJECTEST"
-        android:textSize="65dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text = "hello"/>
-
 </FrameLayout>

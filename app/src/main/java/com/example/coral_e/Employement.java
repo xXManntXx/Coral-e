@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,8 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class Employement extends Fragment {
+
+    private static final String TAG = "start";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -85,26 +88,39 @@ public class Employement extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        NavController navController = Navigation.findNavController(view);
+        if (getArguments() != null) {
 
-        ImageView back = view.findViewById(R.id.retour);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_employement_to_board);
-            }
-        });
+            EmployementArgs args = EmployementArgs.fromBundle(getArguments());
+            TextView OBJECT = view.findViewById(R.id.Tool_NomIle);
 
-        //Showing list of laws
-        //data
-        //TODO récupérer les acteurs de l'île en question
-        List<Actor> myActors = new ArrayList<>();
-        myActors.add(new Fisherman());
-        myActors.add(new TouristicAgency());
-        myActors.add(new EnvironmentalAssociation());
-        //TODO supprimer au dessus pour remplacer par les acteurs de lîle
-        //get lists view
-        ListView actorsListView = view.findViewById(R.id.myActors_list_view);
-        actorsListView.setAdapter(new ActorAdapter(getContext(),myActors));
+            Island Island = args.getEmployIsland();
+            OBJECT.setText(Island.getIslandName());
+            Log.d(TAG,"TESTESTEST" + Island.getIslandName());
+
+            EmployementDirections.ActionEmployementToBoard actionEtoB = EmployementDirections.actionEmployementToBoard(Island);
+
+            NavController navController = Navigation.findNavController(view);
+
+            ImageView back = view.findViewById(R.id.retour);
+            back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navController.navigate(actionEtoB);
+                }
+            });
+
+            //Showing list of laws
+            //data
+            //TODO récupérer les acteurs de l'île en question
+            List<Actor> myActors = new ArrayList<>();
+            myActors.add(new Fisherman());
+            myActors.add(new TouristicAgency());
+            myActors.add(new EnvironmentalAssociation());
+            //TODO supprimer au dessus pour remplacer par les acteurs de lîle
+            //get lists view
+            ListView actorsListView = view.findViewById(R.id.myActors_list_view);
+            actorsListView.setAdapter(new ActorAdapter(getContext(), myActors));
+
+        }
     }
 }

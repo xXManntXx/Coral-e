@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_employement_to_board"
             app:destination="@id/board" />
+        <argument
+            android:name="employIsland"
+            app:argType="com.example.coral_e.Island" />
     </fragment>
     <fragment
         android:id="@+id/voting"

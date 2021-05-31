@@ -44,7 +44,7 @@ public class ActorAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        convertView = inflater.inflate(R.layout.adapter_law, null);
+        convertView = inflater.inflate(R.layout.adapter_actor, null);
 
         //get info about the item
         Actor currentActor = getItem(position);
@@ -52,12 +52,13 @@ public class ActorAdapter extends BaseAdapter {
         String actorDescription = currentActor.getActorDescription();
         int actorBudget = currentActor.getActorBudget();
 
-        //link the view with the info
-        TextView actorNameView = convertView.findViewById(R.id.actor_name);
-        actorNameView.setText(actorName);
 
+        //link the view with the info
         TextView actorDescriptionView = convertView.findViewById(R.id.actor_description);
         actorDescriptionView.setText(actorDescription);
+
+        TextView actorNameView = convertView.findViewById(R.id.actor_name);
+        actorNameView.setText(actorName);
 
         TextView actorBudgetView = convertView.findViewById(R.id.actor_budget);
         actorBudgetView.setText(actorBudget + "M€");

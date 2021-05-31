@@ -81,44 +81,43 @@ public class Board extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        NavController navController = Navigation.findNavController(view);
-
-        TextView vote = view.findViewById(R.id.tampon);
-        TextView appel = view.findViewById(R.id.icon_telephone);
-        TextView acteur = view.findViewById(R.id.icon_acteur);
-
-        vote.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_board_to_voting);
-            }
-        });
-        appel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_board_to_qr_Code);
-            }
-        });
-        acteur.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_board_to_employement);
-            }
-        });
 
         if(getArguments() != null) {
 
             BoardArgs args = BoardArgs.fromBundle(getArguments());
-            TextView OBJECT = view.findViewById(R.id.OBJECTEST);
+            TextView OBJECT = view.findViewById(R.id.Tool_NomIle);
 
             Island Island = args.getCurrentIsland();
             OBJECT.setText(Island.getIslandName());
             Log.d(TAG,"TESTESTEST" + Island.getIslandName());
 
+            BoardDirections.ActionBoardToEmployement actionBtoE = BoardDirections.actionBoardToEmployement(Island);
 
-       // }
+            NavController navController = Navigation.findNavController(view);
 
+            TextView vote = view.findViewById(R.id.tampon);
+            TextView appel = view.findViewById(R.id.icon_telephone);
+            TextView acteur = view.findViewById(R.id.icon_acteur);
 
+            vote.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navController.navigate(R.id.action_board_to_voting);
+                }
+            });
+            appel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navController.navigate(R.id.action_board_to_qr_Code);
+                }
+            });
+            acteur.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navController.navigate(actionBtoE);
+                }
+            });
+        }
 
     }
-}}
+}

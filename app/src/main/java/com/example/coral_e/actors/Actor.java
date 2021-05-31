@@ -18,6 +18,7 @@ public abstract class Actor {
         this.actorName = myActorName;
         this.actorDescription = myActorDescription;
         this.actorLevel=1;
+        this.actorBudget=1;
         this.actorActivity = true;
     }
 
