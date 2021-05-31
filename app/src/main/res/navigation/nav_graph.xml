@@ -61,6 +61,9 @@
         <action
             android:id="@+id/action_voting_to_board"
             app:destination="@id/board" />
+        <argument
+            android:name="votingIsland"
+            app:argType="com.example.coral_e.Island" />
     </fragment>
     <fragment
         android:id="@+id/qr_Code"
@@ -70,5 +73,8 @@
         <action
             android:id="@+id/action_qr_Code_to_board"
             app:destination="@id/board" />
+        <argument
+            android:name="callingIsland"
+            app:argType="com.example.coral_e.Island" />
     </fragment>
 </navigation>

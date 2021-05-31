@@ -75,14 +75,28 @@ public class Qr_Code extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        NavController navController = Navigation.findNavController(view);
+        if (getArguments() != null) {
 
-        ImageView back = view.findViewById(R.id.retour);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_qr_Code_to_board);
-            }
-        });
+            //Nav
+            NavController navController = Navigation.findNavController(view);
+
+            //Fetch
+            Qr_CodeArgs args = Qr_CodeArgs.fromBundle(getArguments());
+            TextView OBJECT = view.findViewById(R.id.Tool_NomIle);
+
+            Island myIsland = args.getCallingIsland();
+            OBJECT.setText(myIsland.getIslandName());
+
+            Qr_CodeDirections.ActionQrCodeToBoard actionQtoB =  Qr_CodeDirections.actionQrCodeToBoard(myIsland);
+
+
+            ImageView back = view.findViewById(R.id.retour);
+            back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navController.navigate(actionQtoB);
+                }
+            });
+        }
     }
 }

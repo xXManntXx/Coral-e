@@ -78,6 +78,7 @@ public class Start extends Fragment {
         {
             @Override
             public void onClick(View v) {
+
                 String message = IslandName.getText().toString();
                 Island myIsland = new Island(message,"TestingBiome");
                 StartDirections.ActionStartToBoard action = StartDirections.actionStartToBoard(myIsland);

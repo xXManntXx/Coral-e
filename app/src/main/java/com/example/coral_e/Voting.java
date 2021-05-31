@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -87,27 +88,40 @@ public class Voting extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        NavController navController = Navigation.findNavController(view);
+        if (getArguments() != null) {
+            //Nav
+            NavController navController = Navigation.findNavController(view);
 
-        ImageView back = view.findViewById(R.id.retour);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_voting_to_board);
-            }
-        });
+            //Fetch
+            VotingArgs args = VotingArgs.fromBundle(getArguments());
+            TextView OBJECT = view.findViewById(R.id.Tool_NomIle);
+
+            Island myIsland = args.getVotingIsland();
+            OBJECT.setText(myIsland.getIslandName());
+
+            VotingDirections.ActionVotingToBoard actionVtoB = VotingDirections.actionVotingToBoard(myIsland);
 
 
-        //Showing list of laws
-        //data
-        //TODO récupérer les lois de l'île en question
-        List<Law> myLaws = new ArrayList<>();
-        myLaws.add(new BeachPrivatization());
-        myLaws.add(new GreenExcursion());
-        myLaws.add(new RegulatedFishing());
-        //TODO supprimer au dessus pour remplacer par les lois de lîle
-        //get lists view
-        ListView lawsListView = view.findViewById(R.id.myLaws_list_view);
-        lawsListView.setAdapter(new LawAdapter(getContext(),myLaws));
+            ImageView back = view.findViewById(R.id.retour);
+            back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navController.navigate(actionVtoB);
+                }
+            });
+
+
+            //Showing list of laws
+            //data
+            //TODO récupérer les lois de l'île en question
+            List<Law> myLaws = new ArrayList<>();
+            myLaws.add(new BeachPrivatization());
+            myLaws.add(new GreenExcursion());
+            myLaws.add(new RegulatedFishing());
+            //TODO supprimer au dessus pour remplacer par les lois de lîle
+            //get lists view
+            ListView lawsListView = view.findViewById(R.id.myLaws_list_view);
+            lawsListView.setAdapter(new LawAdapter(getContext(), myLaws));
+        }
     }
 }

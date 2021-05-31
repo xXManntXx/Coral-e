@@ -90,14 +90,15 @@ public class Employement extends Fragment {
 
         if (getArguments() != null) {
 
+            //fetch myIsland
             EmployementArgs args = EmployementArgs.fromBundle(getArguments());
             TextView OBJECT = view.findViewById(R.id.Tool_NomIle);
 
-            Island Island = args.getEmployIsland();
-            OBJECT.setText(Island.getIslandName());
-            Log.d(TAG,"TESTESTEST" + Island.getIslandName());
+            Island myIsland = args.getEmployIsland();
+            OBJECT.setText(myIsland.getIslandName());
+            Log.d(TAG,"TESTESTEST" + myIsland.getIslandName());
 
-            EmployementDirections.ActionEmployementToBoard actionEtoB = EmployementDirections.actionEmployementToBoard(Island);
+            EmployementDirections.ActionEmployementToBoard actionEtoB = EmployementDirections.actionEmployementToBoard(myIsland);
 
             NavController navController = Navigation.findNavController(view);
 

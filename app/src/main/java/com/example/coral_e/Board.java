@@ -74,6 +74,7 @@ public class Board extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_board, container, false);
 
+
         return view;
     }
 
@@ -83,17 +84,28 @@ public class Board extends Fragment {
 
 
         if(getArguments() != null) {
+            //enable navController
+            NavController navController = Navigation.findNavController(view);
 
+            //myIsland
+            Island myIsland;
+
+            //fetch Island from ...
             BoardArgs args = BoardArgs.fromBundle(getArguments());
             TextView OBJECT = view.findViewById(R.id.Tool_NomIle);
 
-            Island Island = args.getCurrentIsland();
-            OBJECT.setText(Island.getIslandName());
-            Log.d(TAG,"TESTESTEST" + Island.getIslandName());
+            //...Start/Emplyement/Voting/Calling
+            myIsland= args.getCurrentIsland();
+            OBJECT.setText(myIsland.getIslandName());
+            Log.d(TAG,"TESTESTEST" + myIsland.getIslandName());
 
-            BoardDirections.ActionBoardToEmployement actionBtoE = BoardDirections.actionBoardToEmployement(Island);
 
-            NavController navController = Navigation.findNavController(view);
+
+            //send to ....
+            BoardDirections.ActionBoardToEmployement actionBtoE = BoardDirections.actionBoardToEmployement(myIsland);
+            BoardDirections.ActionBoardToVoting actionBtoV = BoardDirections.actionBoardToVoting(myIsland);
+            BoardDirections.ActionBoardToQrCode actionBtoQ = BoardDirections.actionBoardToQrCode(myIsland);
+
 
             TextView vote = view.findViewById(R.id.tampon);
             TextView appel = view.findViewById(R.id.icon_telephone);
@@ -102,13 +114,13 @@ public class Board extends Fragment {
             vote.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    navController.navigate(R.id.action_board_to_voting);
+                    navController.navigate(actionBtoV);
                 }
             });
             appel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    navController.navigate(R.id.action_board_to_qr_Code);
+                    navController.navigate(actionBtoQ);
                 }
             });
             acteur.setOnClickListener(new View.OnClickListener() {
