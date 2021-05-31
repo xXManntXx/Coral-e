@@ -64,6 +64,8 @@ public abstract class Actor {
         this.actorActivity=false;
     }
 
+    public void increaseActorBudget(int myValue) {this.actorBudget+=myValue;}
+
     //public method
     public abstract void usePassive(Island myIsland); //Passive aptitude, used each begin of turn or on acquisition
     public abstract void useActive(Archipelago myArchipelago); //Active aptitude, used at actor activation
