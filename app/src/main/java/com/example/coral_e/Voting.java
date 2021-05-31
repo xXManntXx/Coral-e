@@ -79,6 +79,7 @@ public class Voting extends Fragment {
         ArrayAdapter<String> myLawsAdapter = new ArrayAdapter<String>(
                 getActivity(),
                 R.layout.fragment_voting,
+                R.id.lawTexts,
                 myPlayerIsland.getLawTexts()
         );
 
