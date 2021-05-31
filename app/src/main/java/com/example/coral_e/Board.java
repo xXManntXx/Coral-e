@@ -107,11 +107,13 @@ public class Board extends Fragment {
             BoardDirections.ActionBoardToEmployement actionBtoE = BoardDirections.actionBoardToEmployement(myIsland);
             BoardDirections.ActionBoardToVoting actionBtoV = BoardDirections.actionBoardToVoting(myIsland);
             BoardDirections.ActionBoardToQrCode actionBtoQ = BoardDirections.actionBoardToQrCode(myIsland);
+            BoardDirections.ActionBoardToEndTurn actionBtoEnd = BoardDirections.actionBoardToEndTurn(myIsland);
 
 
             TextView vote = view.findViewById(R.id.tampon);
             TextView appel = view.findViewById(R.id.icon_telephone);
             TextView acteur = view.findViewById(R.id.icon_acteur);
+            Button end = view.findViewById(R.id.EndTurn);
 
             vote.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -129,6 +131,12 @@ public class Board extends Fragment {
                 @Override
                 public void onClick(View v) {
                     navController.navigate(actionBtoE);
+                }
+            });
+            end.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navController.navigate(actionBtoEnd);
                 }
             });
         }
