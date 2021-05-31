@@ -147,6 +147,15 @@ public final class Island {
         return myVisibleLaws;
     }
 
+    public ArrayList<String> getLawTexts(){
+        ArrayList<String> myLawTexts = new ArrayList<String>();
+        for(Law tempLaw : this.getVisibleLaws())
+        {
+            myLawTexts.add(tempLaw.getLawName());
+        }
+        return myLawTexts;
+    }
+
     public List<Biodiversity> getIslandBio() {
         return islandBio;
     }
@@ -186,6 +195,8 @@ public final class Island {
             }
         };
     }
+
+
 
     //Setter
     public void setIslandID(int myIslandID) {

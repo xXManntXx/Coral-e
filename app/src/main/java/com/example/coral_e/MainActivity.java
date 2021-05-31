@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     //TODO If player is Host :
         Archipelago globalArchi = new Archipelago(playerIsland);
 
+
     //First tests
     //TODO Delete all things below to put the real deal instead
     private TextView mGreetingText;
@@ -37,5 +38,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    //Data transmission test
+    public Island getPlayerIsland()
+    {
+        return playerIsland;
     }
 }

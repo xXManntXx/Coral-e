@@ -11,8 +11,10 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.jetbrains.annotations.NotNull;
@@ -67,8 +69,25 @@ public class Voting extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_voting, container, false);
+
+        //Get information from MainActivity
+        MainActivity activity = (MainActivity) getActivity();
+        Island myPlayerIsland = activity.getPlayerIsland();
+
+        //Build adapter
+        ArrayAdapter<String> myLawsAdapter = new ArrayAdapter<String>(
+                getActivity(),
+                R.layout.fragment_voting,
+                myPlayerIsland.getLawTexts()
+        );
+
+        ListView listView = (ListView) rootView.findViewById(R.id.lawTexts);
+        listView.setAdapter(myLawsAdapter);
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_voting, container, false);
+        return rootView;
     }
 
     @Override
