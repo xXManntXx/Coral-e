@@ -2,6 +2,7 @@ package com.example.coral_e;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.example.coral_e.actors.Actor;
 import com.example.coral_e.actors.EnvironmentalAssociation;
@@ -10,6 +11,7 @@ import com.example.coral_e.actors.Fisherman;
 import com.example.coral_e.actors.Scientifics;
 import com.example.coral_e.actors.TouristicAgency;
 import com.example.coral_e.biodiversity.*;
+import com.example.coral_e.events.Event;
 import com.example.coral_e.laws.BeachPrivatization;
 import com.example.coral_e.laws.FreeTrade;
 import com.example.coral_e.laws.GreenExcursion;
@@ -39,6 +41,7 @@ public final class Island {
     private List<Law> islandLaws = new ArrayList<Law>();
     private List<Biodiversity> islandBio = new ArrayList<Biodiversity>();
     private List<Actor> islandActors = new ArrayList<Actor>();
+    private List<Event> allEvents = new ArrayList<Event>();
     private String biome; //indicate the starting components of the island
     /*BIOMES :
     TestingBiome : can change, used for test
@@ -152,6 +155,10 @@ public final class Island {
         return islandActors;
     }
 
+    public List<Event> getAllEvents() {
+        return allEvents;
+    }
+
     public Actor getActor(Actor myActor)
     {
         try {
@@ -262,6 +269,27 @@ public final class Island {
             myTouristicValue+=tempBio.getTouristicValue()*tempBio.getBioPopulation();
         }
         return myTouristicValue;
+    }
+
+    public void activateEvents(int presentTurn)
+    {
+        for(Event tempEvent : this.allEvents) {
+            tempEvent.activate(this,presentTurn);
+        }
+    }
+
+    public void sufferEvent()
+    {
+        List<Event> activatedEvent = new ArrayList<Event>(){};
+        for(Event tempEvent : this.getAllEvents())
+        {
+            if(tempEvent.isActive())
+            {
+                activatedEvent.add(tempEvent);
+            }
+        }
+        Event chosenEvent = activatedEvent.get(new Random().nextInt(activatedEvent.size()));
+        chosenEvent.happen(this);
     }
 
     public void forecast()

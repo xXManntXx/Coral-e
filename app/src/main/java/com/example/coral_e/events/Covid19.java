@@ -20,7 +20,7 @@ public class Covid19 extends Event {
     //public method
 
     @Override
-    void happen(Island myIsland) {
+    public void happen(Island myIsland) {
         Actor crippledActor = myIsland.getActor(new TouristicAgency());
         if(!crippledActor.getActorName().equals("GoneWrong")) {
             if (crippledActor.getActorLevel()>1) {
@@ -34,4 +34,8 @@ public class Covid19 extends Event {
         }
     }
 
+    @Override
+    public void activate(Island myIsland,int currentTurn) {
+        this.setActive(this.getEventTurn().contains(currentTurn));
+    }
 }
