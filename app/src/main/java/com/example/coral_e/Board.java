@@ -97,8 +97,8 @@ public class Board extends Fragment {
 
             //...Start/Emplyement/Voting/Calling
             myIsland= args.getCurrentIsland();
-            OBJECT.setText(myIsland.getIslandName());
-            Step.setText("Tour : " + myIsland.getPresentTurn());
+            OBJECT.setText(" " + myIsland.getIslandName());
+            Step.setText(" Tour : " + myIsland.getPresentTurn());
             Log.d(TAG,"TESTESTEST" + myIsland.getIslandName());
 
 

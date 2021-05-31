@@ -6,6 +6,7 @@ public class GreenExcursion extends Law {
     public GreenExcursion() {
         super("Classe verte", "Inclure dans le cursus scolaire des enfants des classes natures de sensibilisation à l'environnement.");
         this.setLawID("GREEN_CLASS");
+        this.makeVisible();
     }
 
     @Override

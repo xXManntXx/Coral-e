@@ -114,12 +114,8 @@ public class Employement extends Fragment {
 
             //Showing list of laws
             //data
-            //TODO récupérer les acteurs de l'île en question
-            List<Actor> myActors = new ArrayList<>();
-            myActors.add(new Fisherman());
-            myActors.add(new TouristicAgency());
-            myActors.add(new EnvironmentalAssociation());
-            //TODO supprimer au dessus pour remplacer par les acteurs de lîle
+            List<Actor> myActors = myIsland.getIslandActors();
+
             //get lists view
             ListView actorsListView = view.findViewById(R.id.myActors_list_view);
             actorsListView.setAdapter(new ActorAdapter(getContext(), myActors));

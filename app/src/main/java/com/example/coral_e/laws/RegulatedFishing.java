@@ -4,10 +4,9 @@ import com.example.coral_e.Island;
 
 public class RegulatedFishing extends Law{
     public RegulatedFishing() {
-        super("Peche régulée", "Vous régulé la pêche, interdisant les pratiques destructrices.");
+        super("Pêche régulée", "Vous régulé la pêche, interdisant les pratiques destructrices.");
         this.setLawID("REG_FISHING");
         this.makeVisible();
-        this.makeVoted();
     }
 
     @Override

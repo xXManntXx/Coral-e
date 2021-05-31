@@ -6,6 +6,7 @@ public class FreeTrade extends Law{
     public FreeTrade() {
         super("Libre-échange", "Ouvrir les frontières, enlever les taxes douanières.");
         this.setLawID("FREE_TRADE");
+        this.makeVisible();
     }
 
     @Override

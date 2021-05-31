@@ -115,12 +115,7 @@ public class Voting extends Fragment {
 
             //Showing list of laws
             //data
-            //TODO récupérer les lois de l'île en question
-            List<Law> myLaws = new ArrayList<>();
-            myLaws.add(new BeachPrivatization());
-            myLaws.add(new GreenExcursion());
-            myLaws.add(new RegulatedFishing());
-            //TODO supprimer au dessus pour remplacer par les lois de lîle
+            List<Law> myLaws = myIsland.getVisibleLaws();
             //get lists view
             ListView lawsListView = view.findViewById(R.id.myLaws_list_view);
             lawsListView.setAdapter(new LawAdapter(getContext(), myLaws));
