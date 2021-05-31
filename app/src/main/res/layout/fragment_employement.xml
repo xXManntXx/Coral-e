@@ -8,5 +8,11 @@
 
     <include layout="@layout/toolbar"></include>
 
+    <ListView
+        android:id="@+id/myActors_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></ListView>
+
+
 
 </FrameLayout>

@@ -9,13 +9,13 @@
         android:id="@+id/law_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/law_default_name"></TextView>
+        android:text="@string/law_default_name" />
 
     <TextView
         android:id="@+id/law_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
-        android:text="@string/law_default_content"></TextView>
+        android:text="@string/law_default_content" />
 
 </LinearLayout>
