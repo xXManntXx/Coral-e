@@ -94,6 +94,8 @@ public class endTurn extends Fragment {
 
             endTurnDirections.ActionEndTurnToBoard actionEndtoB = endTurnDirections.actionEndTurnToBoard(myIsland);
 
+            TextView appraisal = view.findViewById(R.id.appraisal);
+            appraisal.setText(myIsland.getIslandAppraisal());
 
             Button next = view.findViewById(R.id.Next);
             next.setOnClickListener(new View.OnClickListener() {

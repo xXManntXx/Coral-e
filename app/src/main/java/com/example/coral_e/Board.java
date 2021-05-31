@@ -136,6 +136,7 @@ public class Board extends Fragment {
             end.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    myIsland.passTurn();
                     navController.navigate(actionBtoEnd);
                 }
             });

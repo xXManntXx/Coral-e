@@ -147,6 +147,10 @@ public final class Island implements Parcelable {
         return forecastScenario;
     }
 
+    public String getIslandAppraisal() {
+        return islandAppraisal;
+    }
+
     public int getSocialLevel() {
         return socialLevel;
     }
