@@ -98,5 +98,8 @@ public class Board extends Fragment {
                 navController.navigate(R.id.action_board_to_employement);
             }
         });
+
+
+
     }
 }

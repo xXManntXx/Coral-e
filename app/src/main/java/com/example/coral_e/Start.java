@@ -80,6 +80,7 @@ public class Start extends Fragment {
         });
 
     }
+
 }
 
 
