@@ -40,6 +40,9 @@
         <argument
             android:name="currentIsland"
             app:argType="com.example.coral_e.Island" />
+        <action
+            android:id="@+id/action_board_to_endTurn"
+            app:destination="@id/endTurn" />
     </fragment>
     <fragment
         android:id="@+id/employement"
@@ -77,4 +80,9 @@
             android:name="callingIsland"
             app:argType="com.example.coral_e.Island" />
     </fragment>
+    <fragment
+        android:id="@+id/endTurn"
+        android:name="com.example.coral_e.endTurn"
+        android:label="fragment_end_turn"
+        tools:layout="@layout/fragment_end_turn" />
 </navigation>
