@@ -11,8 +11,8 @@
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
-            android:id="@+id/action_start_to_first"
-            app:destination="@id/first" />
+            android:id="@+id/action_start_to_board"
+            app:destination="@id/board" />
     </fragment>
     <fragment
         android:id="@+id/first"
@@ -27,5 +27,42 @@
         android:id="@+id/board"
         android:name="com.example.coral_e.Board"
         android:label="fragment_board"
-        tools:layout="@layout/fragment_board" />
+        tools:layout="@layout/fragment_board" >
+        <action
+            android:id="@+id/action_board_to_voting"
+            app:destination="@id/voting" />
+        <action
+            android:id="@+id/action_board_to_employement"
+            app:destination="@id/employement" />
+        <action
+            android:id="@+id/action_board_to_qr_Code"
+            app:destination="@id/qr_Code" />
+    </fragment>
+    <fragment
+        android:id="@+id/employement"
+        android:name="com.example.coral_e.Employement"
+        android:label="fragment_employement"
+        tools:layout="@layout/fragment_employement" >
+        <action
+            android:id="@+id/action_employement_to_board"
+            app:destination="@id/board" />
+    </fragment>
+    <fragment
+        android:id="@+id/voting"
+        android:name="com.example.coral_e.Voting"
+        android:label="fragment_voting"
+        tools:layout="@layout/fragment_voting" >
+        <action
+            android:id="@+id/action_voting_to_board"
+            app:destination="@id/board" />
+    </fragment>
+    <fragment
+        android:id="@+id/qr_Code"
+        android:name="com.example.coral_e.Qr_Code"
+        android:label="fragment_qr__code"
+        tools:layout="@layout/fragment_qr__code" >
+        <action
+            android:id="@+id/action_qr_Code_to_board"
+            app:destination="@id/board" />
+    </fragment>
 </navigation>

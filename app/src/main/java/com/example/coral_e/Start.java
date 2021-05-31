@@ -75,9 +75,10 @@ public class Start extends Fragment {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_start_to_first);
+                navController.navigate(R.id.action_start_to_board);
             }
         });
+
     }
 }
 
