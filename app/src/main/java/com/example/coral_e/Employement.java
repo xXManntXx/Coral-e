@@ -13,9 +13,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.coral_e.actors.Actor;
+import com.example.coral_e.actors.EnvironmentalAssociation;
+import com.example.coral_e.actors.Fisherman;
+import com.example.coral_e.actors.TouristicAgency;
+import com.example.coral_e.adapters.ActorAdapter;
+
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -84,5 +94,17 @@ public class Employement extends Fragment {
                 navController.navigate(R.id.action_employement_to_board);
             }
         });
+
+        //Showing list of laws
+        //data
+        //TODO récupérer les acteurs de l'île en question
+        List<Actor> myActors = new ArrayList<>();
+        myActors.add(new Fisherman());
+        myActors.add(new TouristicAgency());
+        myActors.add(new EnvironmentalAssociation());
+        //TODO supprimer au dessus pour remplacer par les acteurs de lîle
+        //get lists view
+        ListView actorsListView = view.findViewById(R.id.myActors_list_view);
+        actorsListView.setAdapter(new ActorAdapter(getContext(),myActors));
     }
 }
