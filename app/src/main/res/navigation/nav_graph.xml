@@ -38,9 +38,8 @@
             android:id="@+id/action_board_to_qr_Code"
             app:destination="@id/qr_Code" />
         <argument
-            android:name="islandName"
-            app:argType="string"
-            android:defaultValue="PaDeNom" />
+            android:name="currentIsland"
+            app:argType="com.example.coral_e.Island" />
     </fragment>
     <fragment
         android:id="@+id/employement"

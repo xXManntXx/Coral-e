@@ -1,5 +1,6 @@
 package com.example.coral_e;
 
+import android.nfc.Tag;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,8 @@ import org.jetbrains.annotations.NotNull;
  */
 public class Board extends Fragment {
 
+    private static final String TAG = "start";
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,6 +35,7 @@ public class Board extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String Tag;
 
     public Board() {
         // Required empty public constructor
@@ -67,7 +72,9 @@ public class Board extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_board, container, false);
+        View view = inflater.inflate(R.layout.fragment_board, container, false);
+
+        return view;
     }
 
     @Override
@@ -99,7 +106,19 @@ public class Board extends Fragment {
             }
         });
 
+        if(getArguments() != null) {
+
+            BoardArgs args = BoardArgs.fromBundle(getArguments());
+            TextView OBJECT = view.findViewById(R.id.OBJECTEST);
+
+            Island Island = args.getCurrentIsland();
+            OBJECT.setText(Island.getIslandName());
+            Log.d(TAG,"TESTESTEST" + Island.getIslandName());
+
+
+       // }
+
 
 
     }
-}
+}}

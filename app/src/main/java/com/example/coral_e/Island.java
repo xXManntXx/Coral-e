@@ -1,5 +1,8 @@
 package com.example.coral_e;
 
+import androidx.versionedparcelable.ParcelField;
+import androidx.versionedparcelable.VersionedParcelize;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -23,9 +26,13 @@ import com.example.coral_e.scenarios.MarketForce;
 import com.example.coral_e.scenarios.PolicyReform;
 import com.example.coral_e.scenarios.Scenario;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 
 //each player got an island which regroup everything they possessed
-public final class Island {
+@VersionedParcelize
+public final class Island implements Parcelable {
     //Logs
     private static final String TAG = "Island";
 
@@ -87,6 +94,30 @@ public final class Island {
             this.islandBio.add(new FireCoral(10));
         }
     }
+
+    protected Island(Parcel in) {
+        islandID = in.readInt();
+        islandName = in.readString();
+        socialLevel = in.readInt();
+        globalAwareness = in.readInt();
+        islandFocus = in.readInt();
+        islandSpirit = in.readInt();
+        resources = in.readInt();
+        income = in.readInt();
+        biome = in.readString();
+    }
+
+    public static final Creator<Island> CREATOR = new Creator<Island>() {
+        @Override
+        public Island createFromParcel(Parcel in) {
+            return new Island(in);
+        }
+
+        @Override
+        public Island[] newArray(int size) {
+            return new Island[size];
+        }
+    };
 
     //Getter
     public int getIslandID() {
@@ -325,5 +356,23 @@ public final class Island {
                 forecastScenario = new GreatTransition();
             }
         }
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(islandID);
+        dest.writeString(islandName);
+        dest.writeInt(socialLevel);
+        dest.writeInt(globalAwareness);
+        dest.writeInt(islandFocus);
+        dest.writeInt(islandSpirit);
+        dest.writeInt(resources);
+        dest.writeInt(income);
+        dest.writeString(biome);
     }
 }

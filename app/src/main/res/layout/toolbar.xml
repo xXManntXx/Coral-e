@@ -17,23 +17,23 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/Tool_NomIle"
         android:layout_width="160dp"
         android:layout_height="57dp"
-        android:text="Nom de l'ile"
+        android:text="@string/your_island"
         android:textSize="25dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
 
     <TextView
-        android:layout_width="160dp"
-        android:layout_height="57dp"
+        android:layout_width="155dp"
+        android:layout_height="41dp"
         android:text="Etape du jeu"
         android:textSize="25dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="39dp" />
+        tools:layout_editor_absoluteY="57dp" />
 
     <ImageView
         android:id="@+id/retour"

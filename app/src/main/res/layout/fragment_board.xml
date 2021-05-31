@@ -6,8 +6,10 @@
     tools:context=".Board"
     android:background="@drawable/board_bg">
 
-    <include layout="@layout/toolbar"></include>
     <!-- TODO: Update blank fragment layout -->
+
+    <include layout="@layout/toolbar"></include>
+
     <TextView
         android:id="@+id/tampon"
         android:layout_width="231dp"
@@ -34,5 +36,12 @@
         android:layout_marginTop="450dp"
         android:background="@drawable/icon_phone" />
 
+
+    <TextView
+        android:id="@+id/OBJECTEST"
+        android:textSize="65dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text = "hello"/>
 
 </FrameLayout>
