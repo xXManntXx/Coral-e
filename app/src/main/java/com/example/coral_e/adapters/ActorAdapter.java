@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.coral_e.R;
 import com.example.coral_e.actors.Actor;
@@ -61,7 +62,15 @@ public class ActorAdapter extends BaseAdapter {
         actorNameView.setText(actorName);
 
         TextView actorBudgetView = convertView.findViewById(R.id.actor_budget);
-        actorBudgetView.setText(actorBudget + "M€");
+        actorBudgetView.setText(actorBudget + "k€");
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentActor.increaseActorBudget(100);
+                Toast.makeText(context,"Vous investissez 100k€ dans " + actorName +"!",Toast.LENGTH_LONG);
+            }
+        });
 
         return convertView;
     }

@@ -55,6 +55,10 @@ final public class Archipelago {
         return myVisibleLaws;
     }
 
+    public int getPresentTurn() {
+        return presentTurn;
+    }
+
     //modifier
     public void addIsland(Island playerIsland){
         this.federateIslands.add(playerIsland);
