@@ -43,12 +43,14 @@ public final class Island implements Parcelable {
     private int islandFocus; //negative : economic growth - positive : well-being
     private int islandSpirit; //negative : individualism - positive : community
     private Scenario forecastScenario;
+    private String islandAppraisal;
     private int resources;
     private int income;
     private List<Law> islandLaws = new ArrayList<Law>();
     private List<Biodiversity> islandBio = new ArrayList<Biodiversity>();
     private List<Actor> islandActors = new ArrayList<Actor>();
     private List<Event> allEvents = new ArrayList<Event>();
+    private Event sufferedEvent;
     private String biome; //indicate the starting components of the island
     /*BIOMES :
     TestingBiome : can change, used for test
@@ -340,6 +342,7 @@ public final class Island implements Parcelable {
         }
         Event chosenEvent = activatedEvent.get(new Random().nextInt(activatedEvent.size()));
         chosenEvent.happen(this);
+        this.sufferedEvent=chosenEvent;
     }
 
     public void forecast()
@@ -366,11 +369,96 @@ public final class Island implements Parcelable {
         }
     }
 
+    public void makeAppraisal()
+    {
+        String newAppraisal = "";
+        newAppraisal+="------BILAN------\n";
+
+        newAppraisal+="__Prévisions__\n";
+        newAppraisal+="Au vu de vos choix, votre île se dirige vers un scénario de type : " + this.forecastScenario.getScenarioName();
+        newAppraisal+=". \"" +  this.forecastScenario.getScenarioContent() + "\" \n";
+
+        newAppraisal+="__Drâme__\n";
+        newAppraisal+="Durant ces 15 ans, votre île a été frappée par : " + this.sufferedEvent.getEventName();
+        newAppraisal+=". \"" +  this.sufferedEvent.getEventContent() + "\" \n";
+
+        newAppraisal+="__Population__\n";
+        //social
+        newAppraisal+="Votre population est ";
+        if (socialLevel>11)
+        {
+            newAppraisal+="très heureuse.";
+        }
+        else if (socialLevel>0)
+        {
+            newAppraisal+="plutôt heureuse.";
+        }
+        else {
+            newAppraisal+="malheureuse.";
+        }
+        newAppraisal+="\n";
+        //awareness
+        if (globalAwareness>9)
+        {
+            newAppraisal+="Elle est profondément consciente du problème environnemental.";
+        }
+        else if (globalAwareness>0)
+        {
+            newAppraisal+="Elle évite de trop abîmer l'environnement.";
+        }
+        else {
+            newAppraisal+="Elle n'a pas conscience des enjeux environnementaux.";
+        }
+        newAppraisal+="\nVotre population ";
+        //finance
+        if (income>500)
+        {
+            newAppraisal+="est globalement riche.";
+        }
+        else if (income>200)
+        {
+            newAppraisal+="plutôt de classe moyenne.";
+        }
+        else {
+            newAppraisal+="plutôt pauvre.";
+        }
+
+        newAppraisal+="__Acteurs__\n";
+        newAppraisal+="Vos acteurs favoris sont : ";
+        for (Actor tempActeur : islandActors)
+        {
+            if (tempActeur.isActorActiv()&&tempActeur.getActorBudget()>200){
+                newAppraisal+="\n- " + tempActeur.getActorName();
+            }
+        }
+        newAppraisal+="\n";
+
+        newAppraisal+="__Ecosystème__\n";
+        newAppraisal+="Autour de votre île vous trouverez : ";
+        for (Biodiversity tempBio : islandBio)
+        {
+            newAppraisal+="\n- " + tempBio.getBioName() + ".Population : " + tempBio.getBioPopulation() + " millier de spécimènes.";
+        }
+
+        newAppraisal+="\n\n-------------\nBon courage pour la suite de votre mandat !!";
+        islandAppraisal = newAppraisal;
+    }
+
     public void passTurn()
     {
-        this.presentTurn+=1;
+        for (Actor tempActor : islandActors)
+        {
+            if(tempActor.isActorActiv())
+            {
+                tempActor.usePassive(this);
+            }
+        }
+        this.forecast();
         this.activateEvents(this.presentTurn);
         this.sufferEvent();
+        this.makeAppraisal();
+        //TODO a supprimer car sera redondant avec l'archipel
+        this.presentTurn+=1;
     }
 
     @Override

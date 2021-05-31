@@ -35,6 +35,10 @@ public abstract class Actor {
 
     public ArrayList<Actor> getActorDevelopment() { return actorDevelopment; }
 
+    public boolean isActorActiv() {
+        return actorActivity;
+    }
+
     //setter
     protected void setActorName(String myActorName) {
         actorName = myActorName;
