@@ -64,6 +64,7 @@ public class ActorAdapter extends BaseAdapter {
         TextView actorBudgetView = convertView.findViewById(R.id.actor_budget);
         actorBudgetView.setText(actorBudget + "k€");
 
+        //On click action
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

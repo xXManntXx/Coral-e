@@ -10,7 +10,7 @@ public class Fisherman extends Actor {
 
     public Fisherman()
     {
-        super("Fisherman","Représente la pêche à la ligne par les locaux.");
+        super("Pêcheur","Représente la pêche à la ligne par les locaux.");
     }
 
     //public method

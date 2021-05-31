@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.coral_e.R;
 import com.example.coral_e.laws.Law;
@@ -55,6 +56,27 @@ public class LawAdapter extends BaseAdapter {
 
         TextView lawContentView = convertView.findViewById(R.id.law_content);
         lawContentView.setText(lawContent);
+
+        //on click action
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(currentLaw.isVoted())
+                {
+                    Toast.makeText(
+                            context,
+                            "La loi "+currentLaw.getLawName() + "est officiellement votée!",
+                            Toast.LENGTH_LONG).show();
+                }
+                else {
+                    currentLaw.makeVoted();
+                    Toast.makeText(
+                            context,
+                            "Vous venez de voter en faveur de "+currentLaw.getLawName() + "!\n Félicitations",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
         return convertView;
     }
