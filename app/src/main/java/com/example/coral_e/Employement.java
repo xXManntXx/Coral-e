@@ -93,9 +93,11 @@ public class Employement extends Fragment {
             //fetch myIsland
             EmployementArgs args = EmployementArgs.fromBundle(getArguments());
             TextView OBJECT = view.findViewById(R.id.Tool_NomIle);
+            TextView Step = view.findViewById(R.id.Tool_Etape);
 
             Island myIsland = args.getEmployIsland();
             OBJECT.setText(myIsland.getIslandName());
+            Step.setText("Tour : " + myIsland.getPresentTurn());
             Log.d(TAG,"TESTESTEST" + myIsland.getIslandName());
 
             EmployementDirections.ActionEmployementToBoard actionEtoB = EmployementDirections.actionEmployementToBoard(myIsland);

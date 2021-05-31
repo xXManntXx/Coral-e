@@ -93,10 +93,12 @@ public class Board extends Fragment {
             //fetch Island from ...
             BoardArgs args = BoardArgs.fromBundle(getArguments());
             TextView OBJECT = view.findViewById(R.id.Tool_NomIle);
+            TextView Step = view.findViewById(R.id.Tool_Etape);
 
             //...Start/Emplyement/Voting/Calling
             myIsland= args.getCurrentIsland();
             OBJECT.setText(myIsland.getIslandName());
+            Step.setText("Tour : " + myIsland.getPresentTurn());
             Log.d(TAG,"TESTESTEST" + myIsland.getIslandName());
 
 

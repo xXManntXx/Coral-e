@@ -232,7 +232,10 @@ public final class Island implements Parcelable {
         };
     }
 
-
+    //TODO to delete because redondant with archipelago
+    public int getPresentTurn() {
+        return presentTurn;
+    }
 
     //Setter
     public void setIslandID(int myIslandID) {

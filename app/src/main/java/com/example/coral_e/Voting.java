@@ -95,9 +95,11 @@ public class Voting extends Fragment {
             //Fetch
             VotingArgs args = VotingArgs.fromBundle(getArguments());
             TextView OBJECT = view.findViewById(R.id.Tool_NomIle);
+            TextView Step = view.findViewById(R.id.Tool_Etape);
 
             Island myIsland = args.getVotingIsland();
             OBJECT.setText(myIsland.getIslandName());
+            Step.setText("Tour : " +myIsland.getPresentTurn());
 
             VotingDirections.ActionVotingToBoard actionVtoB = VotingDirections.actionVotingToBoard(myIsland);
 

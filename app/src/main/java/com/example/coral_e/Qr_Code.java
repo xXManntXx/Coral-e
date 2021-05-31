@@ -83,9 +83,11 @@ public class Qr_Code extends Fragment {
             //Fetch
             Qr_CodeArgs args = Qr_CodeArgs.fromBundle(getArguments());
             TextView OBJECT = view.findViewById(R.id.Tool_NomIle);
+            TextView Step = view.findViewById(R.id.Tool_Etape);
 
             Island myIsland = args.getCallingIsland();
             OBJECT.setText(myIsland.getIslandName());
+            Step.setText("Tour : " + myIsland.getPresentTurn());
 
             Qr_CodeDirections.ActionQrCodeToBoard actionQtoB =  Qr_CodeDirections.actionQrCodeToBoard(myIsland);
 
