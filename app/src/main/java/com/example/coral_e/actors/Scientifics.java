@@ -25,4 +25,9 @@ public class Scientifics extends Actor{
     public void evolve(Island myIsland) {
         //TODO Aquarium de conservation
     }
+
+    @Override
+    public void evolve() {
+        this.setActorLevel((int)this.getActorBudget()/30);
+    }
 }

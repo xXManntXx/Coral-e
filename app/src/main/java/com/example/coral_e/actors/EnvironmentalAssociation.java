@@ -27,4 +27,9 @@ public class EnvironmentalAssociation extends Actor {
             this.deactivateActor();
         }
     }
+
+    @Override
+    public void evolve() {
+        this.setActorLevel((int)(this.getActorBudget()/10));
+    }
 }

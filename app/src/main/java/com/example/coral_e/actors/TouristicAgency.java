@@ -36,4 +36,10 @@ public class TouristicAgency extends Actor {
     public void evolve(Island myIsland) {
         //TODO possibilité d'évolution -> bio tourisme, tourisme de masse
     }
+
+    @Override
+    public void evolve() {
+        this.setActorLevel((int)this.getActorBudget()/15);
+    }
+
 }
