@@ -6,12 +6,21 @@
     tools:context=".Employement"
     android:background="@drawable/employement">
 
-    <include layout="@layout/toolbar"></include>
 
-    <ListView
-        android:id="@+id/myActors_list_view"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="wrap_content">
+        <include layout="@layout/toolbar"></include>
+
+        <ListView
+            android:id="@+id/myActors_list_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="185dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_below="@+id/Toolbar" />
+    </RelativeLayout>
 
 
 
