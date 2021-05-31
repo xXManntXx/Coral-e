@@ -84,5 +84,12 @@
         android:id="@+id/endTurn"
         android:name="com.example.coral_e.endTurn"
         android:label="fragment_end_turn"
-        tools:layout="@layout/fragment_end_turn" />
+        tools:layout="@layout/fragment_end_turn" >
+        <action
+            android:id="@+id/action_endTurn_to_board"
+            app:destination="@id/board" />
+        <argument
+            android:name="endIsland"
+            app:argType="com.example.coral_e.Island" />
+    </fragment>
 </navigation>

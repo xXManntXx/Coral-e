@@ -2,11 +2,26 @@ package com.example.coral_e;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.example.coral_e.adapters.LawAdapter;
+import com.example.coral_e.laws.Law;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,5 +75,33 @@ public class endTurn extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_end_turn, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        if (getArguments() != null) {
+            //Nav
+            NavController navController = Navigation.findNavController(view);
+
+            //Fetch
+            endTurnArgs args = endTurnArgs.fromBundle(getArguments());
+
+
+            Island myIsland = args.getEndIsland();
+
+
+            endTurnDirections.ActionEndTurnToBoard actionEndtoB = endTurnDirections.actionEndTurnToBoard(myIsland);
+
+
+            Button next = view.findViewById(R.id.Next);
+            next.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navController.navigate(actionEndtoB);
+                }
+            });
+        }
     }
 }
