@@ -44,7 +44,7 @@ public class ActorAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        convertView = inflater.inflate(R.layout.adapter_law, null);
+        convertView = inflater.inflate(R.layout.adapter_actor, null);
 
         //get info about the item
         Actor currentActor = getItem(position);
