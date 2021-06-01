@@ -1,5 +1,6 @@
 package com.example.coral_e;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 
@@ -15,6 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -62,10 +66,6 @@ public class Board extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -124,6 +124,7 @@ public class Board extends Fragment {
             appel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     navController.navigate(actionBtoQ);
                 }
             });
