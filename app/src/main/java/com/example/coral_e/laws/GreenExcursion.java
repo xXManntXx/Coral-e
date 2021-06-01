@@ -10,7 +10,7 @@ public class GreenExcursion extends Law {
     }
 
     @Override
-    void apply(Island myIsland) {
+    public void apply(Island myIsland) {
         myIsland.increaseAwareness(10);
         myIsland.increaseFocus(5);
     }

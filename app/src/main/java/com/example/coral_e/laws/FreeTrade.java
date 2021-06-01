@@ -10,7 +10,7 @@ public class FreeTrade extends Law{
     }
 
     @Override
-    void apply(Island myIsland) {
+    public void apply(Island myIsland) {
         myIsland.increaseFocus(-5);
     }
 }

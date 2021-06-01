@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.coral_e.laws.Law;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -137,6 +138,10 @@ public class Board extends Fragment {
             end.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    for(Law tempLaw : myIsland.getVotedLaws())
+                    {
+                        tempLaw.apply(myIsland);
+                    }
                     myIsland.passTurn();
                     navController.navigate(actionBtoEnd);
                 }

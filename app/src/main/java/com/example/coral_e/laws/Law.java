@@ -78,6 +78,6 @@ public abstract class Law {
     }
 
     //to be implemented by subclasses
-    abstract void apply(Island myIsland);
+    abstract public void apply(Island myIsland);
 
 }

@@ -14,7 +14,9 @@ import com.example.coral_e.actors.Fisherman;
 import com.example.coral_e.actors.Scientifics;
 import com.example.coral_e.actors.TouristicAgency;
 import com.example.coral_e.biodiversity.*;
+import com.example.coral_e.events.Covid19;
 import com.example.coral_e.events.Event;
+import com.example.coral_e.events.OilSlick;
 import com.example.coral_e.laws.BeachPrivatization;
 import com.example.coral_e.laws.FreeTrade;
 import com.example.coral_e.laws.GreenExcursion;
@@ -97,6 +99,10 @@ public final class Island implements Parcelable {
             this.islandBio.add(new BlacktipShark(5));
             this.islandBio.add(new FireCoral(10));
         }
+
+        //TODO add all events
+        this.allEvents.add(new Covid19());
+        this.allEvents.add(new OilSlick());
 
         //TODO just for presentation, to delete after (redondant with Archipelago)
         this.presentTurn = 1;
@@ -235,6 +241,9 @@ public final class Island implements Parcelable {
             @Override
             public void evolve(Island myIsland) {
             }
+
+            @Override
+            public void evolve(){}
         };
     }
 
@@ -337,6 +346,7 @@ public final class Island implements Parcelable {
     public void sufferEvent()
     {
         List<Event> activatedEvent = new ArrayList<Event>(){};
+        this.activateEvents(this.presentTurn);
         for(Event tempEvent : this.getAllEvents())
         {
             if(tempEvent.isActive())
@@ -344,9 +354,12 @@ public final class Island implements Parcelable {
                 activatedEvent.add(tempEvent);
             }
         }
-        Event chosenEvent = activatedEvent.get(new Random().nextInt(activatedEvent.size()));
-        chosenEvent.happen(this);
-        this.sufferedEvent=chosenEvent;
+        if (activatedEvent.size()>0)
+        {
+            Event chosenEvent = activatedEvent.get(new Random().nextInt(activatedEvent.size()));
+            chosenEvent.happen(this);
+            this.sufferedEvent=chosenEvent;
+        }
     }
 
     public void forecast()
