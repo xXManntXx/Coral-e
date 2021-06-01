@@ -43,4 +43,9 @@ public class Fisherman extends Actor {
             this.deactivateActor();
         }
     }
+
+    @Override
+    public void evolve() {
+        this.setActorLevel((int)this.getActorBudget()/25);
+    }
 }

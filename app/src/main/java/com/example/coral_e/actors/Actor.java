@@ -35,6 +35,10 @@ public abstract class Actor {
 
     public ArrayList<Actor> getActorDevelopment() { return actorDevelopment; }
 
+    public boolean isActorActiv() {
+        return actorActivity;
+    }
+
     //setter
     protected void setActorName(String myActorName) {
         actorName = myActorName;
@@ -64,10 +68,12 @@ public abstract class Actor {
         this.actorActivity=false;
     }
 
-    public void increaseActorBudget(int myValue) {this.actorBudget+=myValue;}
+    public void increaseActorBudget(int myValue) {this.actorBudget+=myValue;this.evolve();}
 
     //public method
     public abstract void usePassive(Island myIsland); //Passive aptitude, used each begin of turn or on acquisition
     public abstract void useActive(Archipelago myArchipelago); //Active aptitude, used at actor activation
     public abstract void evolve(Island myIsland);//Modify the level based on the budget value
+    //TODO a supprimer par la suite, une fois que le transfert de donné sera mieux maitrisé
+    public abstract void evolve();
 }

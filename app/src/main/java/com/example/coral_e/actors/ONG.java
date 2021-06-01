@@ -32,4 +32,5 @@ public class ONG extends EnvironmentalAssociation{
             tempIsland.increaseAwareness(15);
         }
     }
+
 }

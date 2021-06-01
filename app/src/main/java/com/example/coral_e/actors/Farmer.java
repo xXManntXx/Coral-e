@@ -25,4 +25,9 @@ public class Farmer extends  Actor {
     public void evolve(Island myIsland) {
         //TODO agriculture green ou agriculture intensive
     }
+
+    @Override
+    public void evolve() {
+        this.setActorLevel((int)(this.getActorBudget()/10));
+    }
 }
