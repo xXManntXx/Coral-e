@@ -10,7 +10,7 @@ public class BeachPrivatization  extends Law{
     }
 
     @Override
-    void apply(Island myIsland) {
+    public void apply(Island myIsland) {
         myIsland.increaseSpirit(-5);
     }
 }

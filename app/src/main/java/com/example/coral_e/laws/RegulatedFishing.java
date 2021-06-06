@@ -10,7 +10,7 @@ public class RegulatedFishing extends Law{
     }
 
     @Override
-    void apply(Island myIsland) {
+    public void apply(Island myIsland) {
         if (myIsland.getGlobalAwareness()<5)
         {
             myIsland.increaseSocialLvl(-5);

@@ -326,6 +326,7 @@ public final class Island implements Parcelable {
     public void sufferEvent()
     {
         List<Event> activatedEvent = new ArrayList<Event>(){};
+        this.activateEvents(this.presentTurn);
         for(Event tempEvent : this.getAllEvents())
         {
             if(tempEvent.isActive())
@@ -333,9 +334,12 @@ public final class Island implements Parcelable {
                 activatedEvent.add(tempEvent);
             }
         }
-        Event chosenEvent = activatedEvent.get(new Random().nextInt(activatedEvent.size()));
-        chosenEvent.happen(this);
-        this.sufferedEvent=chosenEvent;
+        if (activatedEvent.size()>0)
+        {
+            Event chosenEvent = activatedEvent.get(new Random().nextInt(activatedEvent.size()));
+            chosenEvent.happen(this);
+            this.sufferedEvent=chosenEvent;
+        }
     }
 
     public void forecast()
