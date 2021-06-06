@@ -75,7 +75,6 @@ public class Board extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_board, container, false);
 
-
         return view;
     }
 
@@ -98,8 +97,9 @@ public class Board extends Fragment {
 
             //...Start/Emplyement/Voting/Calling
             myIsland= args.getCurrentIsland();
-            OBJECT.setText(" " + myIsland.getIslandName());
-            Step.setText(" Tour : " + myIsland.getPresentTurn());
+            //Toolbar Name
+            OBJECT.setText("  " + myIsland.getIslandName());
+            Step.setText("  Tour : " + myIsland.getPresentTurn());
             Log.d(TAG,"TESTESTEST" + myIsland.getIslandName());
 
 
@@ -116,12 +116,15 @@ public class Board extends Fragment {
             TextView acteur = view.findViewById(R.id.icon_acteur);
             Button end = view.findViewById(R.id.EndTurn);
 
+            //Go to Voting Fragment if click
             vote.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     navController.navigate(actionBtoV);
                 }
             });
+
+            //Go to QR-Code Fragment if click
             appel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -129,12 +132,17 @@ public class Board extends Fragment {
                     navController.navigate(actionBtoQ);
                 }
             });
+
+            //Go to Employement Fragment if click
             acteur.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     navController.navigate(actionBtoE);
                 }
             });
+
+
+            //Go to endTurn Fragment if click
             end.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

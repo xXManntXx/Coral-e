@@ -73,7 +73,7 @@ public class LawAdapter extends BaseAdapter {
                     //Show infos about what the player did by clicking
                     Toast.makeText(
                             context,
-                            "La loi "+currentLaw.getLawName() + "est officiellement votée!",
+                            "La loi "+currentLaw.getLawName() + " est officiellement votée!",
                             Toast.LENGTH_LONG).show();
                 }
                 else {

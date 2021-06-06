@@ -96,14 +96,15 @@ public class Employement extends Fragment {
             TextView Step = view.findViewById(R.id.Tool_Etape);
 
             Island myIsland = args.getEmployIsland();
-            OBJECT.setText(myIsland.getIslandName());
-            Step.setText("Tour : " + myIsland.getPresentTurn());
+            OBJECT.setText("  " +myIsland.getIslandName());
+            Step.setText("  Tour : " + myIsland.getPresentTurn());
             Log.d(TAG,"TESTESTEST" + myIsland.getIslandName());
 
             EmployementDirections.ActionEmployementToBoard actionEtoB = EmployementDirections.actionEmployementToBoard(myIsland);
 
             NavController navController = Navigation.findNavController(view);
 
+            //go to Board if click
             ImageView back = view.findViewById(R.id.retour);
             back.setOnClickListener(new View.OnClickListener() {
                 @Override

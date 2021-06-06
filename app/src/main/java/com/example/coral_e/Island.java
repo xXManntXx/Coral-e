@@ -375,11 +375,11 @@ public final class Island implements Parcelable {
         newAppraisal+="Au vu de vos choix, votre île se dirige vers un scénario de type : " + this.forecastScenario.getScenarioName();
         newAppraisal+=". \"" +  this.forecastScenario.getScenarioContent() + "\" \n";
 
-        newAppraisal+="__Drâme__\n";
+        newAppraisal+="\n__Drâme__\n";
         newAppraisal+="Durant ces 15 ans, votre île a été frappée par : " + this.sufferedEvent.getEventName();
         newAppraisal+=". \"" +  this.sufferedEvent.getEventContent() + "\" \n";
 
-        newAppraisal+="__Population__\n";
+        newAppraisal+="\n__Population__\n";
         //social
         newAppraisal+="Votre population est ";
         if (socialLevel>11)
@@ -420,7 +420,7 @@ public final class Island implements Parcelable {
             newAppraisal+="plutôt pauvre.";
         }
 
-        newAppraisal+="\n__Acteurs__\n";
+        newAppraisal+="\n\n__Acteurs__\n";
         newAppraisal+="Vos acteurs favoris sont : ";
         for (Actor tempActeur : islandActors)
         {
@@ -430,11 +430,11 @@ public final class Island implements Parcelable {
         }
         newAppraisal+="\n";
 
-        newAppraisal+="__Ecosystème__\n";
+        newAppraisal+="\n__Ecosystème__\n";
         newAppraisal+="Autour de votre île vous trouverez : ";
         for (Biodiversity tempBio : islandBio)
         {
-            newAppraisal+="\n- " + tempBio.getBioName() + ". - Population : " + tempBio.getBioPopulation() + " millier de spécimènes.";
+            newAppraisal+="\n- " + tempBio.getBioName() + ".\nPopulation : " + tempBio.getBioPopulation() + " millier de spécimènes.";
         }
 
         newAppraisal+="\n\n-------------\nBon courage pour la suite de votre mandat !!";

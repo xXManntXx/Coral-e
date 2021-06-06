@@ -135,12 +135,14 @@ public class Qr_Code extends Fragment {
             TextView Step = view.findViewById(R.id.Tool_Etape);
 
             Island myIsland = args.getCallingIsland();
-            OBJECT.setText(myIsland.getIslandName());
-            Step.setText("Tour : " + myIsland.getPresentTurn());
+            //ToolBar Name
+            OBJECT.setText("  " + myIsland.getIslandName());
+            Step.setText("  Tour : " + myIsland.getPresentTurn());
 
+            //action
             Qr_CodeDirections.ActionQrCodeToBoard actionQtoB =  Qr_CodeDirections.actionQrCodeToBoard(myIsland);
 
-
+            //Go to Board if Click
             ImageView back = view.findViewById(R.id.retour);
             back.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -76,9 +76,13 @@ public class First extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //enable NavController
         NavController navController = Navigation.findNavController(view);
 
+        //empty TextView to click in order to change fragments
         TextView vide = view.findViewById(R.id.textview);
+
+        //clickListener to detect the click
         vide.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

@@ -55,7 +55,7 @@ public class Start extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+        //Enable the StartButton if something is written
         StartButton.setEnabled(false);
         IslandName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -79,8 +79,13 @@ public class Start extends Fragment {
             @Override
             public void onClick(View v) {
 
+                //Get the name of the Island
                 String message = IslandName.getText().toString();
+
+                //Creating the Island
                 Island myIsland = new Island(message,"TestingBiome");
+
+                //create an action that pass my Island data to fragments fetching it
                 StartDirections.ActionStartToBoard action = StartDirections.actionStartToBoard(myIsland);
                 Log.d(TAG,"TESTESTEST" + message);
                 navController.navigate(action);
