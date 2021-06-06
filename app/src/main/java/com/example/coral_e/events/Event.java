@@ -5,11 +5,17 @@ import com.example.coral_e.Island;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+---Event---
+Virtual event that occurs at each end of turn, impacting the island on a negative way
+*/
+
 public abstract class Event {
     private String eventName;
     private String eventContent;
-    private boolean isActive;
-    private List<Integer>  eventTurn = new ArrayList<Integer>(); //can contain 1, 2 or 3
+    private boolean isActive; //determine if the event can occur or not
+    private List<Integer>  eventTurn = new ArrayList<>(); //can contain 1, 2 or 3.
+                                                        // Represent the ellipse when the event can occur
 
     public Event(String myEventName, String myEventContent) {
         this.eventName = myEventName;
@@ -44,12 +50,6 @@ public abstract class Event {
     protected void setActive(boolean active) { this.isActive = active;}
 
     //public Method
-    public boolean isItTime(Integer actualTurn)
-    {
-        return this.eventTurn.contains(actualTurn);
-    }
-
     abstract public void happen(Island myIsland);
-
-    abstract public void activate(Island myIsland, int currentTurn);
+    abstract public void activate(Island myIsland, int currentTurn);//determine if the condition are fulfilled for this event to occur
 }

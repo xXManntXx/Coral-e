@@ -13,7 +13,12 @@ import com.example.coral_e.actors.Actor;
 import com.example.coral_e.laws.Law;
 
 import java.util.List;
-
+/*
+-Adaptor of actor-
+Use to show list of actors on screen
+adapt automatically to the size of the list
+linked to the layout of the same name.xml
+ */
 public class ActorAdapter extends BaseAdapter {
 
     private Context context;
@@ -69,6 +74,7 @@ public class ActorAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 currentActor.increaseActorBudget(100);
+                //Show infos about what the player did by clicking
                 Toast.makeText(
                         context,
                         "Vous investissez 100k€ dans " + actorName +"!\nTotal : " + currentActor.getActorBudget()+"k€",

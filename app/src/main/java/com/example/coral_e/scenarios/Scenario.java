@@ -1,5 +1,12 @@
 package com.example.coral_e.scenarios;
 
+/*
+---Scenario---
+Correspond to the different ending the player can get.
+It's also used to know where the player actions seems to be leading it
+*/
+
+
 public abstract class Scenario {
     private String scenarioID;
     private String scenarioName;

@@ -12,22 +12,22 @@ public class Farmer extends  Actor {
 
     @Override
     public void usePassive(Island myIsland) {
-        myIsland.increaseSocialLvl(15);
-        myIsland.increaseIncome(10);
+        myIsland.increaseSocialLvl(5*getActorLevel());
+        myIsland.increaseIncome(3*getActorLevel());
     }
 
     @Override
     public void useActive(Archipelago myArchipelago) {
-        //TODO vend ses productions dans les autres îles, gagnant de l'argent augmentant le social dans les autres villes
+        //TODO sell part of the production to other island, increasing their social and making profit
     }
 
     @Override
     public void evolve(Island myIsland) {
-        //TODO agriculture green ou agriculture intensive
+        //TODO involve into green agriculture or intensive agriculture
     }
 
     @Override
     public void evolve() {
-        this.setActorLevel((int)(this.getActorBudget()/10));
+        this.setActorLevel(this.getActorBudget()/10);
     }
 }

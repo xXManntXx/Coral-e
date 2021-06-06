@@ -13,6 +13,13 @@ import com.example.coral_e.laws.Law;
 
 import java.util.List;
 
+/*
+-Adaptor of law-
+Use to show list of laws on screen
+adapt automatically to the size of the list
+linked to the layout of the same name.xml
+ */
+
 public class LawAdapter extends BaseAdapter {
 
     private Context context;
@@ -63,6 +70,7 @@ public class LawAdapter extends BaseAdapter {
             public void onClick(View v) {
                 if(currentLaw.isVoted())
                 {
+                    //Show infos about what the player did by clicking
                     Toast.makeText(
                             context,
                             "La loi "+currentLaw.getLawName() + "est officiellement votée!",
@@ -70,6 +78,7 @@ public class LawAdapter extends BaseAdapter {
                 }
                 else {
                     currentLaw.makeVoted();
+                    //Show infos about what the player did by clicking
                     Toast.makeText(
                             context,
                             "Vous venez de voter en faveur de "+currentLaw.getLawName() + "!\n Félicitations",

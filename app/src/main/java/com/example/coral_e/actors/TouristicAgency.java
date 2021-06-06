@@ -19,6 +19,7 @@ public class TouristicAgency extends Actor {
         myIsland.increaseIncome(this.getActorLevel()*myIsland.touristicValue());
         if (myIsland.getGlobalAwareness()<10)
         {
+            //randomly chose a specie to affect
             Biodiversity affectedBio = myIsland.getIslandBio().get(new Random().nextInt(myIsland.getIslandBio().size()));
             affectedBio.lowerBioPopulation((int)(affectedBio.getBioPopulation()*0.1*this.getActorLevel()));
         }
@@ -29,17 +30,17 @@ public class TouristicAgency extends Actor {
 
     @Override
     public void useActive(Archipelago myArchipelago) {
-        //TODO part en croisière dans une autre île de l'archipèle, générant de l'argent en fonction de l'ecosystème de l'île visitée.
+        //TODO cruise into another island, generating money for both island regarding of the biodiversity on this island. Can damage the biodiversity
     }
 
     @Override
     public void evolve(Island myIsland) {
-        //TODO possibilité d'évolution -> bio tourisme, tourisme de masse
+        //TODO can evolve into bio-tourism or massive-tourism
     }
 
     @Override
     public void evolve() {
-        this.setActorLevel((int)this.getActorBudget()/15);
+        this.setActorLevel(this.getActorBudget()/15);
     }
 
 }

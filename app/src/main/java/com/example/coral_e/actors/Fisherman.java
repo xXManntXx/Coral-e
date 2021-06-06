@@ -8,6 +8,7 @@ public class Fisherman extends Actor {
     //Logs
     private static final String TAG = "Fisherman";
 
+    //constructor
     public Fisherman()
     {
         super("Pêcheur","Représente la pêche à la ligne par les locaux.");
@@ -19,9 +20,10 @@ public class Fisherman extends Actor {
     {
         for (Biodiversity tempBio : myIsland.getIslandBio()) {
             if (tempBio.getRealm().equals("Fauna") && tempBio.getFoodValue()>0){
+                //if the law prevent us from fishing protected species, we don't
                 if(!(myIsland.isLawVoted("REG_FISHING") && tempBio.getBioID().equals("BLACK_SHARK")))
                 {
-                    int caughtFish = Math.min((5 * this.getActorLevel()), (int) (tempBio.getBioPopulation() / 10));
+                    int caughtFish = Math.min((5 * this.getActorLevel()),tempBio.getBioPopulation() / 10);
                     myIsland.increaseIncome(tempBio.getFoodValue()*caughtFish);
                     tempBio.lowerBioPopulation(caughtFish);
                 }
@@ -29,23 +31,24 @@ public class Fisherman extends Actor {
         }
     }
     @Override
-    public void useActive(Archipelago myArchipelago) //generate income based on fishery
+    public void useActive(Archipelago myArchipelago)
     {
         //TODO propose the player to select an island, and fish there
     }
 
     @Override
     public void evolve(Island myIsland) {
-        this.setActorLevel((int)this.getActorBudget()/25);
+        this.setActorLevel(this.getActorBudget()/25);
+        //if the focus of the island is more self-centered
         if (this.getActorLevel()>3 && myIsland.getIslandFocus()<0)
         {
-            myIsland.addActor(new Trawler(this.getActorLevel()));
+            myIsland.addActor(new Trawler(this.getActorLevel(),this.getActorBudget()));
             this.deactivateActor();
         }
     }
 
     @Override
     public void evolve() {
-        this.setActorLevel((int)this.getActorBudget()/25);
+        this.setActorLevel(this.getActorBudget()/25);
     }
 }

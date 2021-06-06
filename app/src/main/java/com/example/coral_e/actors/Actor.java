@@ -1,16 +1,18 @@
 package com.example.coral_e.actors;
-
-import com.example.coral_e.Archipelago;
 import com.example.coral_e.Island;
+import com.example.coral_e.Archipelago;
 
-import java.util.ArrayList;
+/*
+---ACTOR---
+Physical card type representing the user of the see or of the island.
+Each actor card got a QR-code that can be scanned
+*/
 
 public abstract class Actor {
     private String actorName;
     private String actorDescription;
     private int actorBudget; //used to determine the evolution of the actor
     private int actorLevel;  //used to determine the efficiency of the actor
-    private ArrayList<Actor> actorDevelopment;
     private boolean actorActivity; //when evolve, turn to false
 
     //Constructor
@@ -32,8 +34,6 @@ public abstract class Actor {
     public int getActorLevel() {
         return actorLevel;
     }
-
-    public ArrayList<Actor> getActorDevelopment() { return actorDevelopment; }
 
     public boolean isActorActiv() {
         return actorActivity;
@@ -72,8 +72,11 @@ public abstract class Actor {
 
     //public method
     public abstract void usePassive(Island myIsland); //Passive aptitude, used each begin of turn or on acquisition
-    public abstract void useActive(Archipelago myArchipelago); //Active aptitude, used at actor activation
-    public abstract void evolve(Island myIsland);//Modify the level based on the budget value
-    //TODO a supprimer par la suite, une fois que le transfert de donné sera mieux maitrisé
+    public abstract void useActive(Archipelago myArchipelago); //Active aptitude, used at actor activation by scan
+    public abstract void evolve(Island myIsland);//Modify the level based on the budget value.
+                                                // If conditions are fulfilled, turn this actor into a non basic actor by deactivating this one and adding a new evolved one into the island.
+
+    //TODO to delete when data transfer will be better handled
+    //more simple version where the actor only modify himself without evolving into another actor
     public abstract void evolve();
 }

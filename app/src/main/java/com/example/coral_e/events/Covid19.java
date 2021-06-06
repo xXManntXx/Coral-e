@@ -2,18 +2,16 @@ package com.example.coral_e.events;
 
 import com.example.coral_e.Island;
 import com.example.coral_e.actors.Actor;
-import com.example.coral_e.actors.Fisherman;
 import com.example.coral_e.actors.TouristicAgency;
 import com.example.coral_e.biodiversity.Biodiversity;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Covid19 extends Event {
     public Covid19(){
         super("Covid-19","Une pandémie mondiale se déclare. Les frontières ainsi que tous les commerces non essentiels se retrouvent fermés.");
-        List<Integer> eventTurns = Arrays.asList(1);
+        List<Integer> eventTurns = Collections.singletonList(1); //can happen only during the first ellipse
         setEventTurn(eventTurns);
     }
 
@@ -21,8 +19,8 @@ public class Covid19 extends Event {
 
     @Override
     public void happen(Island myIsland) {
-        Actor crippledActor = myIsland.getActor(new TouristicAgency());
-        if(!crippledActor.getActorName().equals("GoneWrong")) {
+        Actor crippledActor = myIsland.getActor(new TouristicAgency()); //get the touristagency or its evolution if exist
+        if(crippledActor!=null) { //if an actor is fetched
             if (crippledActor.getActorLevel()>1) {
                 crippledActor.increaseLevel(-1);
             }

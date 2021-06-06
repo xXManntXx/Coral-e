@@ -1,6 +1,5 @@
 package com.example.coral_e;
 
-import androidx.versionedparcelable.ParcelField;
 import androidx.versionedparcelable.VersionedParcelize;
 
 import java.util.ArrayList;
@@ -11,10 +10,12 @@ import com.example.coral_e.actors.Actor;
 import com.example.coral_e.actors.EnvironmentalAssociation;
 import com.example.coral_e.actors.Farmer;
 import com.example.coral_e.actors.Fisherman;
-import com.example.coral_e.actors.Scientifics;
+import com.example.coral_e.actors.Scientists;
 import com.example.coral_e.actors.TouristicAgency;
 import com.example.coral_e.biodiversity.*;
+import com.example.coral_e.events.Covid19;
 import com.example.coral_e.events.Event;
+import com.example.coral_e.events.OilSlick;
 import com.example.coral_e.laws.BeachPrivatization;
 import com.example.coral_e.laws.FreeTrade;
 import com.example.coral_e.laws.GreenExcursion;
@@ -28,9 +29,13 @@ import com.example.coral_e.scenarios.Scenario;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 
-//each player got an island which regroup everything they possessed
+/*
+---Island---
+Each player got one, contains everything the player have and information about his society, politic, social etc
+ */
 @VersionedParcelize
 public final class Island implements Parcelable {
     //Logs
@@ -38,18 +43,19 @@ public final class Island implements Parcelable {
 
     private int islandID;
     private String islandName;
-    private int socialLevel;
-    private int globalAwareness;
-    private int islandFocus; //negative : economic growth - positive : well-being
-    private int islandSpirit; //negative : individualism - positive : community
+    private int socialLevel; //use to know if the people are living well
+    private int globalAwareness; //use to know if people care for biodiversity or no
+    //politic information
+    private int islandFocus; //negative : economic growth _ positive : well-being
+    private int islandSpirit; //negative : individualism _ positive : community
     private Scenario forecastScenario;
-    private String islandAppraisal;
-    private int resources;
-    private int income;
-    private List<Law> islandLaws = new ArrayList<Law>();
-    private List<Biodiversity> islandBio = new ArrayList<Biodiversity>();
-    private List<Actor> islandActors = new ArrayList<Actor>();
-    private List<Event> allEvents = new ArrayList<Event>();
+    private String islandAppraisal; //to make previsions
+    private int resources; //money
+    private int income; //money gain each turn
+    private List<Law> islandLaws = new ArrayList<>();
+    private List<Biodiversity> islandBio = new ArrayList<>();
+    private List<Actor> islandActors = new ArrayList<>();
+    private List<Event> allEvents = new ArrayList<>();
     private Event sufferedEvent;
     private String biome; //indicate the starting components of the island
     /*BIOMES :
@@ -76,8 +82,8 @@ public final class Island implements Parcelable {
         this.globalAwareness = 0;
         this.islandFocus = 0;
         this.islandSpirit = 0;
-        this.resources = 0;
-        this.income = 0;
+        this.resources = 0; //TODO set base resources
+        this.income = 0; //TODO set base income
         //TODO add all existing laws in islandLaws
         this.islandLaws.add(new RegulatedFishing());
         this.islandLaws.add(new BeachPrivatization());
@@ -85,12 +91,12 @@ public final class Island implements Parcelable {
         this.islandLaws.add(new GreenExcursion());
 
         //TODO add all starting biodiversity and actors regarding of the chosen biome
-        if (myBiome=="TestingBiome")
+        if (myBiome.equals("TestingBiome"))
         {
             this.islandActors.add(new Fisherman());
             this.islandActors.add(new TouristicAgency());
             this.islandActors.add(new Farmer());
-            this.islandActors.add(new Scientifics());
+            this.islandActors.add(new Scientists());
             this.islandActors.add(new EnvironmentalAssociation());
 
             this.islandBio.add(new MahiMahi(20));
@@ -98,10 +104,15 @@ public final class Island implements Parcelable {
             this.islandBio.add(new FireCoral(10));
         }
 
+        //TODO add all existing events
+        this.allEvents.add(new Covid19());
+        this.allEvents.add(new OilSlick());
+
         //TODO just for presentation, to delete after (redondant with Archipelago)
         this.presentTurn = 1;
     }
 
+    //for data transfer
     protected Island(Parcel in) {
         islandID = in.readInt();
         islandName = in.readString();
@@ -113,7 +124,6 @@ public final class Island implements Parcelable {
         income = in.readInt();
         biome = in.readString();
     }
-
     public static final Creator<Island> CREATOR = new Creator<Island>() {
         @Override
         public Island createFromParcel(Parcel in) {
@@ -169,7 +179,7 @@ public final class Island implements Parcelable {
 
          //Return voted Island Laws
     public ArrayList<Law> getVotedLaws() {
-        ArrayList<Law> myVotedLaws = new ArrayList<Law>();
+        ArrayList<Law> myVotedLaws = new ArrayList<>();
         for (Law tempLaw : this.islandLaws) {
             if (tempLaw.isVoted()) {
                 myVotedLaws.add(tempLaw);
@@ -180,22 +190,13 @@ public final class Island implements Parcelable {
 
             //Return visible Island Laws
     public ArrayList<Law> getVisibleLaws() {
-        ArrayList<Law> myVisibleLaws = new ArrayList<Law>();
+        ArrayList<Law> myVisibleLaws = new ArrayList<>();
         for (Law tempLaw : this.islandLaws) {
             if (tempLaw.isVisible()) {
                 myVisibleLaws.add(tempLaw);
             }
         }
         return myVisibleLaws;
-    }
-
-    public ArrayList<String> getLawTexts(){
-        ArrayList<String> myLawTexts = new ArrayList<String>();
-        for(Law tempLaw : this.getVisibleLaws())
-        {
-            myLawTexts.add(tempLaw.getLawName());
-        }
-        return myLawTexts;
     }
 
     public List<Biodiversity> getIslandBio() {
@@ -221,24 +222,12 @@ public final class Island implements Parcelable {
             throw new Exception("No actor found");
         }catch (Exception myE){
         myE.printStackTrace();
-        System.err.println("Caught Exception: " + myE.getMessage());
+        Log.e(TAG,"Caught Exception: " + myE.getMessage());
     }
-        return new Actor("GoneWrong","You should not see this.") {
-            @Override
-            public void usePassive(Island myIsland) {
-            }
-
-            @Override
-            public void useActive(Archipelago myArchipelago) {
-            }
-
-            @Override
-            public void evolve(Island myIsland) {
-            }
-        };
+        return null;
     }
 
-    //TODO to delete because redondant with archipelago
+    //TODO to delete because redundant with archipelago
     public int getPresentTurn() {
         return presentTurn;
     }
@@ -427,7 +416,7 @@ public final class Island implements Parcelable {
             newAppraisal+="plutôt pauvre.";
         }
 
-        newAppraisal+="__Acteurs__\n";
+        newAppraisal+="\n__Acteurs__\n";
         newAppraisal+="Vos acteurs favoris sont : ";
         for (Actor tempActeur : islandActors)
         {
@@ -441,7 +430,7 @@ public final class Island implements Parcelable {
         newAppraisal+="Autour de votre île vous trouverez : ";
         for (Biodiversity tempBio : islandBio)
         {
-            newAppraisal+="\n- " + tempBio.getBioName() + ".Population : " + tempBio.getBioPopulation() + " millier de spécimènes.";
+            newAppraisal+="\n- " + tempBio.getBioName() + ". - Population : " + tempBio.getBioPopulation() + " millier de spécimènes.";
         }
 
         newAppraisal+="\n\n-------------\nBon courage pour la suite de votre mandat !!";
@@ -460,8 +449,9 @@ public final class Island implements Parcelable {
         this.forecast();
         this.activateEvents(this.presentTurn);
         this.sufferEvent();
+        this.generateIncome();
         this.makeAppraisal();
-        //TODO a supprimer car sera redondant avec l'archipel
+        //TODO to delete, will be redundant with archipelago
         this.presentTurn+=1;
     }
 

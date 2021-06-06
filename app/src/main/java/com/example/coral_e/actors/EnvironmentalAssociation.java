@@ -16,20 +16,20 @@ public class EnvironmentalAssociation extends Actor {
 
     @Override
     public void useActive(Archipelago myArchipelago) {
-        //TODO intervient dans d'autres îles pour augmenter leur niveau d'awareness
+        //TODO visit an other island to augment their globalAwareness and restore their ecosystem
     }
 
     @Override
     public void evolve(Island myIsland) {
-        this.setActorLevel((int)(this.getActorBudget()/10));
+        this.setActorLevel(this.getActorBudget()/10);
         if (this.getActorLevel()>5) {
-            myIsland.addActor(new ONG(this.getActorLevel()));
-            this.deactivateActor();
+            myIsland.addActor(new ONG(this.getActorLevel(),this.getActorBudget()));
+            this.deactivateActor();//will not be considered anymore
         }
     }
 
     @Override
     public void evolve() {
-        this.setActorLevel((int)(this.getActorBudget()/10));
+        this.setActorLevel(this.getActorBudget()/10);
     }
 }

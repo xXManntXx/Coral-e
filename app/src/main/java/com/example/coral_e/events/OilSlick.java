@@ -24,6 +24,8 @@ public class OilSlick extends Event{
 
     @Override
     public void activate(Island myIsland, int currentTurn) {
-        this.setActive(myIsland.getForecastScenario() instanceof MarketForce);
+        //can happen only in a marketforce scenario
+        this.setActive((myIsland.getForecastScenario() instanceof MarketForce)
+                && (this.getEventTurn().contains(currentTurn)));
     }
 }

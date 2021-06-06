@@ -1,7 +1,6 @@
 package com.example.coral_e;
 
-import com.example.coral_e.biodiversity.Biodiversity;
-import com.example.coral_e.events.Event;
+
 import com.example.coral_e.laws.BeachPrivatization;
 import com.example.coral_e.laws.FreeTrade;
 import com.example.coral_e.laws.GreenExcursion;
@@ -10,12 +9,15 @@ import com.example.coral_e.laws.RegulatedFishing;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-//created by the host of the game only, contains every other island and general game information
+
+/*
+---Archipelago---
+Created by the host of the game only, contains every other island and general game information
+ */
 final public class Archipelago {
-    private List<Island> federateIslands = new ArrayList<Island>(); //contain the island of each player
-    private List<Law> archipelagoLaws = new ArrayList<Law>();
+    private List<Island> federateIslands = new ArrayList<>(); //contain the island of each player
+    private List<Law> archipelagoLaws = new ArrayList<>();
     private int nbPlayer;
     private int presentTurn;
 
@@ -46,7 +48,7 @@ final public class Archipelago {
 
             //Return visible IslandLaws
     public ArrayList<Law> getVisibleLaws() {
-        ArrayList<Law> myVisibleLaws = new ArrayList<Law>();
+        ArrayList<Law> myVisibleLaws = new ArrayList<>();
         for (Law tempLaw : this.archipelagoLaws) {
             if (tempLaw.isVisible()) {
                 myVisibleLaws.add(tempLaw);

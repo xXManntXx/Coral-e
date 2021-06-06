@@ -3,8 +3,14 @@ package com.example.coral_e.biodiversity;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+---Biodiversity---
+Physical in game tokens representing portion of total bio population
+*/
+
+
 public abstract class Biodiversity {
-    private String bioID ;
+    private String bioID ; //unique ID to easily identify each element
     private String bioName ;
     private String bioDescription ;
     private int bioPopulation;

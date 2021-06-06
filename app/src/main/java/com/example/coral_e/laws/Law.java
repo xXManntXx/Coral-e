@@ -2,8 +2,14 @@ package com.example.coral_e.laws;
 
 import com.example.coral_e.Island;
 
+/*
+---Law---
+Use to determine the politic orientation of the island.
+Can have diverse impact on the island.
+*/
+
 public abstract class Law {
-    private String lawID;
+    private String lawID; //unique ID to easily refer to sub-Law
     private String lawName;
     private int nbVote;
     private boolean isVisible;
@@ -40,6 +46,7 @@ public abstract class Law {
         return lawContent;
     }
 
+    //useful on multiplayer mode to decide if the law have the majority
     public int getNbVote() {
         return nbVote;
     }
@@ -63,6 +70,7 @@ public abstract class Law {
         this.nbVote++;
     }
 
+    //TODO to delete when data transfer will be better handled
     public void makeVoted(){
         this.isVoted=true;
     }
