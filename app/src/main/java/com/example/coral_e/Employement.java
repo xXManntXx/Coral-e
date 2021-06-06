@@ -108,7 +108,7 @@ public class Employement extends Fragment {
             ImageView back = view.findViewById(R.id.retour);
             back.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                 public void onClick(View v) {
                     navController.navigate(actionEtoB);
                 }
             });
